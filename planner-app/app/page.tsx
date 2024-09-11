@@ -25,9 +25,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col p-5">
-      <div className="flex-grow grid grid-cols-12 text-xl">
+      <div className="flex-grow grid grid-cols-12 gap-4 text-xl">
         {/* courses browser and semester planner */}
-        <CourseBrowser styles={"border border-red-500 col-start-1 col-end-3"} />
+        <CourseBrowser styles={"col-start-1 col-end-3"} />
         <SemesterPlanner styles={"border border-blue-500 col-start-3 col-end-13"} />
       </div>
       {/* summary */}
