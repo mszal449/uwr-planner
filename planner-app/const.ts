@@ -1,16 +1,5 @@
-interface ObjectId {
-    $oid: string;
-}
+import { Course } from "./types";
 
-interface Course {
-    _id: ObjectId;
-    name: string;
-    semester: string;
-    type: string;
-    ects: string;
-    tags: string[] | null;
-    effects: string[] | null;
-}
 
 export const sample_courses: Course[] = [
     {
@@ -24,11 +13,11 @@ export const sample_courses: Course[] = [
     },
     {
         _id: { $oid: "66705c6de22909bbc8b7c9ba" },
-        name: "Advanced Distributed Algorithms",
+        name: "Podstawy informatyki i programowania",
         semester: "Letni",
         type: "I2.T - teoria inf.",
         ects: "6",
-        tags: ["SY (systemy sieciowe i komputerowe)", "AZ (algorytmika i złożoność obliczeniowa)"],
+        tags: ["Data Science"],
         effects: null
     },
     {
@@ -37,7 +26,7 @@ export const sample_courses: Course[] = [
         semester: "Zimowy",
         type: "I2.Z - zastosowania inf.",
         ects: "6",
-        tags: ["PD (przetwarzanie danych)", "DS (Data Science)"],
+        tags: null,
         effects: null
     },
     {
@@ -46,7 +35,7 @@ export const sample_courses: Course[] = [
         semester: "Letni",
         type: "Informatyczny 1",
         ects: "8",
-        tags: ["ASK (Architektury systemów komputerowych)"],
+        tags: ["Systemy sieciowe i komputerowe"],
         effects: ["Architektury systemów komputerowych"]
     },
     {
@@ -55,14 +44,32 @@ export const sample_courses: Course[] = [
         semester: "Letni",
         type: "I2.T - teoria inf.",
         ects: "6",
-        tags: ["AZ (algorytmika i złożoność obliczeniowa)"],
-        effects: null
-    }
+        tags: ["Algorytmika i złożoność obliczeniowa"],
+        effects: ["Podstawy inżynierii oprogramowania"]
+    },
+    {
+        _id: { $oid: "66705c6de22909bbc8b7c9fd" },
+        name: "Combinatorial optimization",
+        semester: "Letni",
+        type: "I2.T - teoria inf.",
+        ects: "6",
+        tags: ["Algorytmika i złożoność obliczeniowa"],
+        effects: ["Rachunek prawdopodobieństwa (L)"]
+    },
+    {
+        _id: { $oid: "66705c6de22909bbc8b7c9fe" },
+        name: "Combinatorial optimization",
+        semester: "Letni",
+        type: "I2.T - teoria inf.",
+        ects: "6",
+        tags: ["Algorytmika i złożoność obliczeniowa"],
+        effects: ["Podstawy inżynierii oprogramowania"]
+    },
 ];
 
 
 export const educationEffects: { [key: string]: { shortName: string, backgroundColor: string } } = {
-    "Podstawy informatyki i programowania": { shortName: "PI", backgroundColor: "#FFDDC1" },
+    "Podstawy informatyki i programowania": { shortName: "PI", backgroundColor: "#FFC1E1" },
     "Programowanie i projektowanie obiektowe": { shortName: "PO", backgroundColor: "#C1E1FF" },
     "Architektury systemów komputerowych": { shortName: "AS", backgroundColor: "#FFC1C1" },
     "Rachunek prawdopodobieństwa (L)": { shortName: "RP", backgroundColor: "#C1FFC1" },
@@ -81,7 +88,7 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "Metody numeryczne i grafika komputerowa": { shortName: "MG", backgroundColor: "#E1FFC1" },
     "Języki programowania i logika": { shortName: "JP", backgroundColor: "#C1FFD5" },
     "Przetwarzanie danych": { shortName: "PD", backgroundColor: "#E1FFC1" },
-    "Data Science": { shortName: "DS", backgroundColor: "#FFDDC1" },
+    "Data Science": { shortName: "DS", backgroundColor: "#FFC1E1" },
     "Praca zespołowa": { shortName: "PZ", backgroundColor: "#FFDBC1" },
     "Bazy danych": { shortName: "BD", backgroundColor: "#FFC1E1" },
     "Ekonomia": { shortName: "EK", backgroundColor: "#C1F3FF" },
