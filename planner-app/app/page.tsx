@@ -31,7 +31,7 @@ export default function Home() {
         <SemesterPlanner styles={"border border-blue-500 col-start-3 col-end-13"} />
       </div>
       {/* summary */}
-      <Summary styles={"p-4 border border-purple-500"}/>
+      <Summary styles={"p-4 border border-purple-500]"}/>
     </div>
   );
 }

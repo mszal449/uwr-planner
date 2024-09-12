@@ -61,36 +61,36 @@ export const sample_courses: Course[] = [
 ];
 
 
-export const educationEffects: { [key: string]: string } = {
-    "Podstawy informatyki i programowania": "PI",
-    "Programowanie i projektowanie obiektowe": "PO",
-    "Architektury systemów komputerowych": "AS",
-    "Rachunek prawdopodobieństwa (L)": "RP",
-    "Systemy operacyjne": "SO",
-    "Sieci komputerowe": "SK",
-    "Bazy danych": "BD",
-    "Podstawy inżynierii oprogramowania": "IO",
-    "Inżynieria oprogramowania (L)": "IL",
-    "Rachunek prawdopodobieństwa (I)": "RI",
-    "Społeczno-ekonomiczne aspekty informatyki (I)": "SE"
+export const educationEffects: { [key: string]: { shortName: string, backgroundColor: string } } = {
+    "Podstawy informatyki i programowania": { shortName: "PI", backgroundColor: "#FFDDC1" },
+    "Programowanie i projektowanie obiektowe": { shortName: "PO", backgroundColor: "#C1E1FF" },
+    "Architektury systemów komputerowych": { shortName: "AS", backgroundColor: "#FFC1C1" },
+    "Rachunek prawdopodobieństwa (L)": { shortName: "RP", backgroundColor: "#C1FFC1" },
+    "Systemy operacyjne": { shortName: "SO", backgroundColor: "#F3C1FF" },
+    "Sieci komputerowe": { shortName: "SK", backgroundColor: "#C1FFF3" },
+    "Bazy danych": { shortName: "BD", backgroundColor: "#FFD5C1" },
+    "Podstawy inżynierii oprogramowania": { shortName: "IO", backgroundColor: "#C1C4FF" },
+    "Inżynieria oprogramowania (L)": { shortName: "IL", backgroundColor: "#FFD1C1" },
+    "Rachunek prawdopodobieństwa (I)": { shortName: "RI", backgroundColor: "#C1FFDD" },
+    "Społeczno-ekonomiczne aspekty informatyki (I)": { shortName: "SE", backgroundColor: "#FFC1E1" }
   };
-
-export const CourseTags: { [key: string]: string } = {
-    "Systemy sieciowe i komputerowe": "SK",
-    "Algorytmika i złożoność obliczeniowa": "AZ",
-    "Metody numeryczne i grafika komputerowa": "MG",
-    "Języki programowania i logika": "JP",
-    "Przetwarzanie danych": "PD",
-    "Data Science": "DS",
-    "Praca zespołowa": "PZ",
-    "Bazy danych": "BD",
-    "Ekonomia": "EK",
-    "Inżynieria oprogramowania": "IO",
-    "Projektowanie i programowanie obiektowe": "PO",
-    "Architektury systemów komputerowych": "AS",
-    "Systemy operacyjne": "SO",
-    "Sieci komputerowe": "SK",
-    "Ochrona własności intelektualnej": "OI",
-    "Rachunek prawdopodobieństwa i statystyka": "RP"
+  
+  export const CourseTags: { [key: string]: { shortName: string, backgroundColor: string } } = {
+    "Systemy sieciowe i komputerowe": { shortName: "SK", backgroundColor: "#C1FFF3" },
+    "Algorytmika i złożoność obliczeniowa": { shortName: "AZ", backgroundColor: "#FFF5C1" },
+    "Metody numeryczne i grafika komputerowa": { shortName: "MG", backgroundColor: "#E1FFC1" },
+    "Języki programowania i logika": { shortName: "JP", backgroundColor: "#C1FFD5" },
+    "Przetwarzanie danych": { shortName: "PD", backgroundColor: "#E1FFC1" },
+    "Data Science": { shortName: "DS", backgroundColor: "#FFDDC1" },
+    "Praca zespołowa": { shortName: "PZ", backgroundColor: "#FFDBC1" },
+    "Bazy danych": { shortName: "BD", backgroundColor: "#FFC1E1" },
+    "Ekonomia": { shortName: "EK", backgroundColor: "#C1F3FF" },
+    "Inżynieria oprogramowania": { shortName: "IO", backgroundColor: "#C1C4FF" },
+    "Projektowanie i programowanie obiektowe": { shortName: "PO", backgroundColor: "#C1E1FF" },
+    "Architektury systemów komputerowych": { shortName: "AS", backgroundColor: "#FFC1C1" },
+    "Systemy operacyjne": { shortName: "SO", backgroundColor: "#F3C1FF" },
+    "Sieci komputerowe": { shortName: "SK", backgroundColor: "#C1FFF3" },
+    "Ochrona własności intelektualnej": { shortName: "OI", backgroundColor: "#FFDDC1" },
+    "Rachunek prawdopodobieństwa i statystyka": { shortName: "RP", backgroundColor: "#C1FFC1" }
   };
   

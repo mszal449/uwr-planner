@@ -6,11 +6,11 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
   return (
     <div className={`${styles}`}>
         <CourseCard
-          name={"Matematyka dyskretna"}
+          name={"Bazy danych"}
           semester={"Zimowy"}
           type={"Humanistyczno-społeczny"}
           ects={"5"}
-          tags={["Systemy sieciowe i komputerowe", "Data Science"]}
+          tags={["Bazy danych", "Data Science"]}
           effects={["Społeczno-ekonomiczne aspekty informatyki (I)"]}
         />
     </div>
