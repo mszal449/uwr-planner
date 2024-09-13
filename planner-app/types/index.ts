@@ -34,7 +34,7 @@ interface SemesterPlannerProps {
 }
 
 interface SummaryProps {
-    styles: string | null;
+    styles?: string;
 }
 
 

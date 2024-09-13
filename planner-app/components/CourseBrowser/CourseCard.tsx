@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card"
 import { educationEffects, CourseTags } from '@/const';
 import { CourseCardProps } from '@/types';
-import { CourseBadge } from '.';
+import { CourseBadge } from '..';
 
 
 const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: CourseCardProps) => {

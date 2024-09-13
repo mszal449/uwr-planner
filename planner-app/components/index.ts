@@ -1,8 +1,8 @@
-import CourseBrowser from "./CourseBrowser";
+import CourseBrowser from "./CourseBrowser/CourseBrowser";
 import SemesterPlanner from "./SemesterPlanner";
 import Summary from "./Summary";
-import CourseCard from "./CourseCard";
-import CourseBadge from "./CourseBadge";
+import CourseCard from "./CourseBrowser/CourseCard";
+import CourseBadge from "./CourseBrowser/CourseBadge";
 
 // export components 
 export {
