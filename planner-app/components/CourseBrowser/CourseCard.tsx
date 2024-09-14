@@ -31,7 +31,8 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: Cours
               tags.map((tag: string, index: number) => (
                 <CourseBadge
                   key={index}
-                  text={CourseTags[tag].shortName}
+                  text={tag}
+                  shortText={CourseTags[tag].shortName}
                   textColor={"#ffffff"}
                   bgColor={CourseTags[tag].backgroundColor}
                 />
@@ -45,7 +46,8 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: Cours
               effects.map((effect, index) => (
                 <CourseBadge
                   key={index}
-                  text={educationEffects[effect].shortName}
+                  text={effect}
+                  shortText={educationEffects[effect].shortName}
                   textColor={"#ffffff"}
                   bgColor={educationEffects[effect].backgroundColor}
                 />

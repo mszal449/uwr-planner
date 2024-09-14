@@ -29,33 +29,33 @@ export const sample_courses: Course[] = [
         tags: null,
         effects: null
     },
-    // {
-    //     _id: { $oid: "66705c6de22909bbc8b7c9e5" },
-    //     name: "Architektury systemów komputerowych",
-    //     semester: "Letni",
-    //     type: "Informatyczny 1",
-    //     ects: "8",
-    //     tags: ["Systemy sieciowe i komputerowe"],
-    //     effects: ["Architektury systemów komputerowych"]
-    // },
-    // {
-    //     _id: { $oid: "66705c6de22909bbc8b7c9f9" },
-    //     name: "Combinatorial optimization",
-    //     semester: "Letni",
-    //     type: "I2.T - teoria inf.",
-    //     ects: "6",
-    //     tags: ["Algorytmika i złożoność obliczeniowa"],
-    //     effects: ["Podstawy inżynierii oprogramowania"]
-    // },
-    // {
-    //     _id: { $oid: "66705c6de22909bbc8b7c9fd" },
-    //     name: "Combinatorial optimization",
-    //     semester: "Letni",
-    //     type: "I2.T - teoria inf.",
-    //     ects: "6",
-    //     tags: ["Algorytmika i złożoność obliczeniowa"],
-    //     effects: ["Rachunek prawdopodobieństwa (L)"]
-    // },
+    {
+        _id: { $oid: "66705c6de22909bbc8b7c9e5" },
+        name: "Architektury systemów komputerowych",
+        semester: "Letni",
+        type: "Informatyczny 1",
+        ects: "8",
+        tags: ["Systemy sieciowe i komputerowe"],
+        effects: ["Architektury systemów komputerowych"]
+    },
+    {
+        _id: { $oid: "66705c6de22909bbc8b7c9f9" },
+        name: "Combinatorial optimization",
+        semester: "Letni",
+        type: "I2.T - teoria inf.",
+        ects: "6",
+        tags: ["Algorytmika i złożoność obliczeniowa"],
+        effects: ["Podstawy inżynierii oprogramowania"]
+    },
+    {
+        _id: { $oid: "66705c6de22909bbc8b7c9fd" },
+        name: "Combinatorial optimization",
+        semester: "Letni",
+        type: "I2.T - teoria inf.",
+        ects: "6",
+        tags: ["Algorytmika i złożoność obliczeniowa"],
+        effects: ["Rachunek prawdopodobieństwa (L)"]
+    },
     {
         _id: { $oid: "66705c6de22909bbc8b7c9fe" },
         name: "Combinatorial optimization",
