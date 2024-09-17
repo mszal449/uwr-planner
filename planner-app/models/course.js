@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Course = mongoose.Schema(
+const CourseSchema = mongoose.Schema(
   {
     name: String,
     semester: String,
@@ -20,4 +20,5 @@ const Course = mongoose.Schema(
   }
 );
 
-export default mongoose.models.Course || mongoose.model("Course", Course);
+export default mongoose.models.Course || mongoose.model("Course", CourseSchema);
+export { CourseSchema };

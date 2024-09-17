@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
+import {PlanSchema} from "./plan"
 
-const User = mongoose.Schema(
+const UserSchema = mongoose.Schema(
   {
     name: String,
-    degree: String,
+    plans: { type: [PlanSchema], default: [] }
   },
   {
     timestamps: true,
   }
 );
 
-export default mongoose.models.User || mongoose.model("User", User);
+export default mongoose.models.User|| mongoose.model("User", UserSchema);
