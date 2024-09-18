@@ -7,9 +7,28 @@ body {
     @apply bg-[#121212] text-slate-50  ;
 }
 
-.label {
-  @apply bg-[#C1C4FF]
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #747474;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5c5c5c;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 
 @layer base {
   :root {
