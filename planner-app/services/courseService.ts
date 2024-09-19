@@ -1,5 +1,5 @@
 import { DataI, CourseI } from '@/types'
-import { getAll, addRecord, getById, getWithFilters} from './servicesUtils';
+import { getAll, addRecord, getById, getWithFilters} from '../utils/servicesUtils';
 
 
 const urlString = "courses"

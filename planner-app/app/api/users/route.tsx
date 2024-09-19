@@ -1,6 +1,6 @@
 import {User} from "@/models/";
 import { NextRequest } from "next/server";
-import { getReq, postReq, putReq } from "../requests";
+import { getReq, postReq, putReq } from "../../../utils/requests";
 
 // Get users
 export async function GET(req: NextRequest) {
