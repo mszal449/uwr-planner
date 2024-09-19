@@ -1,6 +1,5 @@
 import React from 'react'
-import { HoverCard, HoverCardTrigger, HoverCardContent } from '@radix-ui/react-hover-card'
-import { CourseTags } from '@/const'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '../ui/hover-card'
 
 interface CourseBadgeProps {
   text: string,
