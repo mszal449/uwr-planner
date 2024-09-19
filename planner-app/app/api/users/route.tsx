@@ -1,6 +1,6 @@
 import {User} from "@/models/";
 import { NextRequest } from "next/server";
-import { getReq, postReq } from "../requests";
+import { getReq, postReq, putReq } from "../requests";
 
 // Get users
 export async function GET(req: NextRequest) {
@@ -10,4 +10,9 @@ export async function GET(req: NextRequest) {
 // Create a new user
 export async function POST(req: NextRequest) {
   return postReq(req, User)
+}
+
+// Update user
+export async function PUT(req: NextRequest) {
+  return putReq(req, User)
 }

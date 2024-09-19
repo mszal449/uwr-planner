@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 const connection: { isConnected?: number } ={}
 
 const connectDB = async () => {
-  console.log("connectDB function called");
-
   if (connection.isConnected) {
-    console.log("is connected")
+    console.log("Database is connected")
     return
   }
 

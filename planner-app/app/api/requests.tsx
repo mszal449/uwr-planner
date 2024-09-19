@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import connectDB from "@/lib/connectDB";
 import { NextRequest, NextResponse } from "next/server";
 
+// Get record(s)
 export async function getReq(
   req: NextRequest, model: mongoose.Model<any>, 
   stringFields?: string[], arrayFields?: string[], numberFields?: string[]
@@ -54,7 +55,7 @@ export async function getReq(
   return NextResponse.json({result, maxLength})
 }
 
-// Create a new course
+// Create a new record
 export async function postReq(req: NextRequest, model: mongoose.Model<any>) {
   
   await connectDB();
@@ -76,3 +77,33 @@ export async function postReq(req: NextRequest, model: mongoose.Model<any>) {
 
   return NextResponse.json(instance);
 }
+
+// Updating record
+export async function putReq(req: NextRequest, model: mongoose.Model<any>) {
+
+  await connectDB();
+  const body = await req.json();
+  const { _id, ...updateData } = body;
+
+  if (!_id) {
+    return NextResponse.json({ status: 'error', message: 'ID is required' });
+  }
+
+  let updatedInstance;
+  try {
+    updatedInstance = await model.findByIdAndUpdate(_id, updateData, { new: true });
+    if (!updatedInstance) {
+      return NextResponse.json({ status: 'error', message: 'Record not found' });
+    }
+  } catch (error) {
+    let message;
+    if (error instanceof Error) {
+      message = error.message;
+      return NextResponse.json({ status: 'error', message: message });
+    }
+    return NextResponse.json({ status: 'error', message: 'An unknown error occurred' });
+  }
+
+  return NextResponse.json(updatedInstance);
+}
+
