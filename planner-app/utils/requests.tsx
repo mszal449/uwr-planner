@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import connectDB from "@/lib/connectDB";
 import { NextRequest, NextResponse } from "next/server";
 
-// Get record(s)
+// Get records
 export async function getReq(
   req: NextRequest, model: mongoose.Model<any>, 
   stringFields?: string[], arrayFields?: string[], numberFields?: string[]
@@ -53,6 +53,20 @@ export async function getReq(
   const maxLength = data.length;
   const result = data.slice();
   return NextResponse.json({result, maxLength})
+}
+
+// Gat 1 record from given id
+export async function getId(req: NextRequest, {params}: {params: {id: string}}, model: mongoose.Model<any>) {
+  await connectDB();
+
+  const {id} = params
+  const record = await model.findById(id);
+
+  if (!record) {
+    return NextResponse.json({'status': 'error', 'message': "can't find plan"});
+  }
+
+  return NextResponse.json(record);
 }
 
 // Create a new record

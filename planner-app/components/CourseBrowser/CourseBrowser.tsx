@@ -2,7 +2,7 @@ import React from 'react'
 import { CourseBrowserProps } from '@/types'
 import { CourseCard } from '@/components'
 import { sample_courses } from '@/const'
-import { Course } from '@/types'
+import { CourseI } from '@/types'
 import { ScrollArea, Scrollbar} from '@radix-ui/react-scroll-area'
 
  
@@ -20,15 +20,15 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
       </div>
 
       <ScrollArea className='flex flex-col gap-2 h-full overflow-auto '>
-        {sample_courses.map((course: Course) => (
+        {sample_courses.map((course: CourseI) => (
           <CourseCard
-            key={course._id.$oid}
+            key={course._id}
             name={course.name}
             semester={course.semester}
             type={course.type}
-            ects={course.ects}
+            ects={course.ects.toString()}
             tags={course.tags}
-            effects={course.effects? course.effects : null}
+            effects={course.effects}
         />))}
         <Scrollbar orientation='vertical' />
       </ScrollArea>

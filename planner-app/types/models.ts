@@ -4,20 +4,14 @@ export interface CourseI {
     semester: string;
     type: string;
     ects: number;
-    tags: {
-      type: [string],
-      default: null
-    },
-    effects: {
-      type: [string],
-      default: null
-    }
+    tags: string[] | null
+    effects: string[] | null
 }
 
 export interface PlanI {
     _id: string,
     name: string,
-    degree: string, // engineer or bachelor?
+    degree: "engineer" | "bachelor"
     semesters: [CourseI]
 }
 
