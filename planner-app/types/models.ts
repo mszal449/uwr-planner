@@ -17,7 +17,7 @@ export interface CourseI {
 export interface PlanI {
     _id: string,
     name: string,
-    degree: string, // engineer or bachelor?
+    degree: "engineer" | "bachelor",
     semesters: [CourseI]
 }
 
