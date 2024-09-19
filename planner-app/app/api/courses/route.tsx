@@ -9,8 +9,14 @@ export async function GET(req: NextRequest) {
 }
 
 // Create a new course
+// Create a new course
 export async function POST(req: NextRequest) {
   return postReq(req, Course)
+}
+
+// Update course
+export async function PUT(req: NextRequest) {
+  return putReq(req, Course)
 }
 
 // Update course
