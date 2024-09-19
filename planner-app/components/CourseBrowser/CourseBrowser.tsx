@@ -1,9 +1,11 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import { CourseBrowserProps } from '@/types'
 import { CourseCard } from '@/components'
-import { sample_courses } from '@/const'
 import { CourseI } from '@/types'
 import { ScrollArea, Scrollbar} from '@radix-ui/react-scroll-area'
+import { getCourses } from '@/services'
+import Data from '@/types/data'
 
  
 const tags = Array.from({ length: 50 }).map(
@@ -12,6 +14,17 @@ const tags = Array.from({ length: 50 }).map(
  
 
 const CourseBrowser = ({styles}: CourseBrowserProps) => {
+  const [courses, setCourses] = useState<Data<CourseI> | null>(null)
+
+  useEffect(() => {
+    const getdata = async () => {
+      const data = await getCourses({}) // todo: filter as {user = session.user}
+      console.log(data)
+      setCourses(data)
+    }
+    getdata()
+  }, []);
+
   return (
     <div className={`${styles} flex flex-col gap-2`}>
       <div className='flex'>
@@ -20,7 +33,7 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
       </div>
 
       <ScrollArea className='flex flex-col gap-2 h-full overflow-auto '>
-        {sample_courses.map((course: CourseI) => (
+        {courses?.result.map((course: CourseI) => (
           <CourseCard
             key={course._id}
             name={course.name}

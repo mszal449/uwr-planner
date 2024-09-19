@@ -10,7 +10,6 @@ import { educationEffects, CourseTags } from '@/const';
 import { CourseCardProps } from '@/types';
 import { CourseBadge } from '..';
 
-
 const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: CourseCardProps) => {
   return (
     <Card className="bg-[#282828] hover:bg-[#363636] transition ease-in text-white border-none cursor-pointer">
@@ -28,35 +27,41 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: Cours
           {/* Tags */}
           <div className="flex flex-wrap gap-1">
             {tags && tags.length > 0 && (
-              tags.map((tag: string, index: number) => (
-                <CourseBadge
-                  key={index}
-                  text={tag}
-                  shortText={CourseTags[tag].shortName}
-                  textColor={"#ffffff"}
-                  bgColor={CourseTags[tag].backgroundColor}
-                />
-              ))
+              tags.map((tag: string, index: number) => {
+                const courseTag = CourseTags[tag] || CourseTags["default"];
+                return (
+                  <CourseBadge
+                    key={index}
+                    text={tag}
+                    shortText={courseTag.shortName}
+                    textColor={"#ffffff"}
+                    bgColor={courseTag.backgroundColor}
+                  />
+                );
+              })
             )}
           </div>
 
           {/* Effects */}
           <div className="flex flex-wrap gap-1">
             {effects && effects.length > 0 && (
-              effects.map((effect, index) => (
-                <CourseBadge
-                  key={index}
-                  text={effect}
-                  shortText={educationEffects[effect].shortName}
-                  textColor={"#ffffff"}
-                  bgColor={educationEffects[effect].backgroundColor}
-                />
-              ))
+              effects.map((effect, index) => {
+                const educationEffect = educationEffects[effect] || educationEffects["default"];
+                return (
+                  <CourseBadge
+                    key={index}
+                    text={effect}
+                    shortText={educationEffect.shortName}
+                    textColor={"#ffffff"}
+                    bgColor={educationEffect.backgroundColor}
+                  />
+                );
+              })
             )}
           </div>
         </div>
-        </CardContent>
-      </Card >
+      </CardContent>
+    </Card>
   )
 }
 

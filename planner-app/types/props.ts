@@ -14,6 +14,7 @@ export interface CourseCardProps {
 
 export interface SemesterPlannerProps {
     styles: string | null;
+    planId: string | null
 }
 
 export interface SummaryProps {

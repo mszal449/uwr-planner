@@ -26,7 +26,7 @@ export async function getWithFilters<T>(name: string, filters: Record<string, an
 }
 
 export async function getById<T>(name: string, id: string): Promise<T | null> {
-    const response = await fetch(`$http://localhost:3000/api/${name}/${id}`);
+    const response = await fetch(`http://localhost:3000/api/${name}/${id}`);
     if (!response.ok) {
         console.log(response);
         return null;
