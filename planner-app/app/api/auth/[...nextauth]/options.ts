@@ -9,8 +9,6 @@ export const options = {
             clientId: process.env.GITHUB_ID || "",
             clientSecret: process.env.GITHUB_SECRET || "",
             profile(profile) {
-
-                console.log(`Profile github: ${profile}`)
                 let userRole = "Github User"
 
                 if (profile?.email === "admin") {
@@ -19,7 +17,7 @@ export const options = {
                 
                 return {
                     ...profile,
-                    id: profile.id.toString(), // konwersja id na string
+                    id: profile.id.toString(),
                     role: userRole
                 }
             }
@@ -29,12 +27,14 @@ export const options = {
         async jwt({ token, user }: { token: JWT, user:any }): Promise<JWT> {
             if (user) {
                 token.role = user.role;
+                token.id = user.id;
             }
             return token;
         },
         async session({ session, token }: { session: any; token: JWT }): Promise<Session> {
             if (session?.user) {
                 session.user.role = token.role;
+                session.user.id = token.sub;
             }
             return session;
         }
