@@ -1,5 +1,8 @@
+import { CourseI, PlanI } from "./models";
+
 export interface CourseBrowserProps {
     styles: string | null;
+    onSelectCourse: (c: CourseI) => void
 }
 
 
@@ -10,11 +13,13 @@ export interface CourseCardProps {
     ects: string;
     tags: string[] | null;
     effects: string[] | null;
+    onClickAction: () => void | null
   }
 
 export interface SemesterPlannerProps {
     styles: string | null;
-    planId: string | null
+    plan: PlanI | null;
+    onSelectSemester: (id: number) => void
 }
 
 export interface SummaryProps {

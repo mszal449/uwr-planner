@@ -10,9 +10,11 @@ import { educationEffects, CourseTags } from '@/const';
 import { CourseCardProps } from '@/types';
 import { CourseBadge } from '..';
 
-const CourseCard = ({name, semester, type, ects, tags = [], effects = []}: CourseCardProps) => {
+const CourseCard = ({name, semester, type, ects, tags = [], effects = [], onClickAction = () => {}}: CourseCardProps) => {
   return (
-    <Card className="bg-[#282828] hover:bg-[#363636] transition ease-in text-white border-none cursor-pointer">
+    <Card 
+      className="bg-[#282828] hover:bg-[#363636] transition ease-in text-white border-none cursor-pointer"
+      onClick={onClickAction}> {/* selecting course to add from list or selecting course todelete from semester table */}
       <CardHeader className='p-4 pb-1'>
         <CardTitle className='font-normal'>{name}</CardTitle>
         <CardDescription className='text-[#8b8b8b]'>

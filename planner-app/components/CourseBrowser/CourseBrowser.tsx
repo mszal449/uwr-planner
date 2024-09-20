@@ -13,7 +13,7 @@ const tags = Array.from({ length: 50 }).map(
 )
  
 
-const CourseBrowser = ({styles}: CourseBrowserProps) => {
+const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
   const [courses, setCourses] = useState<Data<CourseI> | null>(null)
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
             ects={course.ects.toString()}
             tags={course.tags}
             effects={course.effects}
+            onClickAction={() => onSelectCourse(course)}
         />))}
         <Scrollbar orientation='vertical' />
       </ScrollArea>
