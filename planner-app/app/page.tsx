@@ -1,7 +1,18 @@
+'use client'
 import { SemesterPlanner, CourseBrowser, Summary } from "@/components";
+import { useSession} from 'next-auth/react'
+import { redirect } from "next/navigation";
+
+export default function Home () {
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect('/api/auth/signin?callbackUrl=/')
+    }
+  })
+  console.log(session)
 
 
-export default function Home() {
   return (
     <div className="flex flex-col h-screen "> 
       <div className="flex-grow grid grid-cols-12 gap-4 p-5 pb-0 min-h-0">
