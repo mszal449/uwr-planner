@@ -55,7 +55,7 @@ export async function getReq(
   return NextResponse.json({result, maxLength})
 }
 
-// Gat 1 record from given id
+// Get 1 record from given id
 export async function getId(req: NextRequest, {params}: {params: {id: string}}, model: mongoose.Model<any>) {
   await connectDB();
 
@@ -92,7 +92,7 @@ export async function postReq(req: NextRequest, model: mongoose.Model<any>) {
   return NextResponse.json(instance);
 }
 
-// Updating record
+// Updating record(s)
 export async function putReq(req: NextRequest, model: mongoose.Model<any>) {
 
   await connectDB();
@@ -121,3 +121,26 @@ export async function putReq(req: NextRequest, model: mongoose.Model<any>) {
   return NextResponse.json(updatedInstance);
 }
 
+// Updating 1 record from given id
+export async function putId(req: NextRequest, {params}: {params: {id: string}}, model: mongoose.Model<any>) {
+  await connectDB();
+
+  const body = await req.json();
+
+  let updatedInstance;
+  try {
+    updatedInstance = await model.findByIdAndUpdate(params.id, body, { new: true });
+    if (!updatedInstance) {
+      return NextResponse.json({ status: 'error', message: 'Record not found' });
+    }
+  } catch (error) {
+    let message;
+    if (error instanceof Error) {
+      message = error.message;
+      return NextResponse.json({ status: 'error', message: message });
+    }
+    return NextResponse.json({ status: 'error', message: 'An unknown error occurred' });
+  }
+
+  return NextResponse.json(updatedInstance);
+}

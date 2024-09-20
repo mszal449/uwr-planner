@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   return getReq(req, Plan, ['name', 'degree'])
 }
 
-// Create a new plans
+// Create a new plan
 export async function POST(req: NextRequest) {
   return postReq(req, Plan)
 }

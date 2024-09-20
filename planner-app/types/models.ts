@@ -12,12 +12,12 @@ export interface PlanI {
     _id: string,
     name: string,
     degree: "engineer" | "bachelor"
-    semesters: [[CourseI]]
+    semesters: CourseI[][]
 }
 
 // todo: change interface while adding authentication
 export interface UserI {
     _id: string;
     name: string;
-    plans?: [PlanI]
+    plans?: PlanI[]
 }

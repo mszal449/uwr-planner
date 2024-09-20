@@ -1,5 +1,5 @@
 import { DataI, PlanI } from '@/types'
-import { getAll, addRecord, getById, getWithFilters} from '../utils/servicesUtils';
+import { getAll, addRecord, getById, getWithFilters, updateRecord} from '../utils/servicesUtils';
 
 
 const urlString = "plans"
@@ -18,4 +18,8 @@ export async function getPlanById(id: string): Promise<PlanI | null> {
 
 export async function addPlan(Plan: PlanI): Promise<PlanI> {
     return addRecord(urlString, Plan)
+}
+
+export async function updatePlan(id: string, updatedPlan: PlanI): Promise<PlanI> {
+    return updateRecord(urlString, id, updatedPlan)
 }

@@ -19,7 +19,8 @@ export interface CourseCardProps {
 export interface SemesterPlannerProps {
     styles: string | null;
     plan: PlanI | null;
-    onSelectSemester: (id: number) => void
+    onSelectSemester: (id: number) => void;
+    deleteCourse: (semId: number, courseId: string) => void
 }
 
 export interface SummaryProps {

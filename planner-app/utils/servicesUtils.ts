@@ -49,3 +49,18 @@ export async function addRecord<T>(name: string, record: T): Promise<T> {
     const data = await response.json();
     return data;
 }
+
+export async function updateRecord<T>(name: string, id: string, updatedRecord: T): Promise<T> {
+    const response = await fetch(`http://localhost:3000/api/${name}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedRecord)
+    });
+    if (!response.ok) {
+        throw new Error(`Error: status ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+}
