@@ -1,6 +1,6 @@
 'use client'
 import { SemesterPlanner, CourseBrowser, Summary } from "@/components";
-import { useSession} from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { redirect } from "next/navigation";
 
 export default function Home () {
@@ -10,7 +10,6 @@ export default function Home () {
       redirect('/api/auth/signin?callbackUrl=/')
     }
   })
-  console.log(session)
 
 
   return (
@@ -19,6 +18,8 @@ export default function Home () {
         <CourseBrowser styles="col-start-1 col-end-3 overflow-auto" />
         <SemesterPlanner styles="col-start-3 col-end-13" />
       </div>
+      <h1>{session?.user.email}</h1>
+      <h1>{session?.user.id}</h1>
       <Summary styles="mt-3 h-10"/>
     </div>
   );
