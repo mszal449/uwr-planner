@@ -5,11 +5,7 @@ import { sample_courses } from '@/const'
 import { CourseI } from '@/types'
 import { ScrollArea, Scrollbar} from '@radix-ui/react-scroll-area'
 
- 
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`
-)
- 
+
 
 const CourseBrowser = ({styles}: CourseBrowserProps) => {
   return (
