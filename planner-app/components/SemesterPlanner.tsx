@@ -1,24 +1,26 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { PlanI, SemesterPlannerProps } from '@/types';
-import { getPlanById } from '@/services';
+import React from 'react'
+import { SemesterPlannerProps } from '@/types';
+import CourseCard from './CourseBrowser/CourseCard';
 
-const SemesterPlanner = ( { styles } : SemesterPlannerProps, planId: string ) => {
-  const [plan, setPlan] = useState<PlanI | null>(null)
-
-  useEffect(() => {
-    const getdata = async () => {
-      const data = await getPlanById(planId)
-      console.log(data)
-      setPlan(data)
-    }
-    getdata()
-  });
+const SemesterPlanner = ( { styles, plan, onSelectSemester, deleteCourse } : SemesterPlannerProps) => {
 
   return (
     <div className={`${styles} flex justify-between gap-3`}>
-      {[1,2,3,4,5,6].map((semester: number) => (
-        <div key={semester} className='semesterTitle bg-[#282828] rounded-md w-full p-3'>Semestr {semester}</div>
+      {plan && plan.semesters.map((semester, index) => (
+        <div key={index} className='bg-[#282828] rounded-md w-full p-3' onClick={() => onSelectSemester(index)}>
+          Semestr {index + 1}
+          {semester.map((course) => (
+            <CourseCard key = {course._id}
+              name = {course.name}
+              semester = {course.semester}
+              type = {course.type}
+              ects = {course.ects.toString()}
+              tags = {course.tags}
+              effects = {course.effects}
+              onClickAction={() => deleteCourse(index, course._id)}
+            />
+          ))}
+        </div>
       ))}
     </div>
   );
