@@ -45,7 +45,7 @@ const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
         {/* <button className='bg-[#282828] rounded-tr-md rounded-br-md px-3 border-none hover:bg-[#363636] transition ease-in'>O</button> */}
       </div>
 
-      <ScrollArea className='flex flex-col gap-2 h-full overflow-auto '>
+      <ScrollArea className='flex flex-col gap-2 h-full overflow-auto pr-1'>
         {filteredCourses?.map((course: CourseI) => (
           <CourseCard
             key={course._id}
