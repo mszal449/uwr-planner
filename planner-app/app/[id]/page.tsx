@@ -37,7 +37,6 @@ export default function PlanView({params}: {params: {id: string}}) {
 
   function savePlan() {
     if (plan) {
-      console.log(plan.semesters.flatMap(c => c))
       updatePlan(plan._id, plan)
     }
   }

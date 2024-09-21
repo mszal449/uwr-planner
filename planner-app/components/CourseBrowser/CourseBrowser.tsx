@@ -15,11 +15,19 @@ const tags = Array.from({ length: 50 }).map(
 
 const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
   const [courses, setCourses] = useState<Data<CourseI> | null>(null)
+  const [search, setSearch] = useState("")
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value)
+  }
+
+  const filteredCourses = courses?.result.filter((course: CourseI) =>
+    course.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   useEffect(() => {
     const getdata = async () => {
-      const data = await getCourses({}) // todo: filter as {user = session.user}
-      console.log(data)
+      const data = await getCourses({name: search})
       setCourses(data)
     }
     getdata()
@@ -28,12 +36,17 @@ const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
   return (
     <div className={`${styles} flex flex-col gap-2`}>
       <div className='flex'>
-        <input type="text" placeholder='search' className='font-light p-2 rounded-tl-md rounded-bl-md outline-none w-full bg-[#282828] focus:bg-[#363636] transition ease-in'/>
-        <button className='bg-[#282828] rounded-tr-md rounded-br-md px-3 border-none hover:bg-[#363636] transition ease-in'>O</button>
+        <input 
+          type="text" placeholder='search' 
+          className='font-light p-2 rounded-md outline-none w-full bg-[#282828] focus:bg-[#363636] transition ease-in'
+          value={search}
+          onChange={handleSearchChange}/>
+        {/* button not needed in this approach, what do you think? */}
+        {/* <button className='bg-[#282828] rounded-tr-md rounded-br-md px-3 border-none hover:bg-[#363636] transition ease-in'>O</button> */}
       </div>
 
       <ScrollArea className='flex flex-col gap-2 h-full overflow-auto '>
-        {courses?.result.map((course: CourseI) => (
+        {filteredCourses?.map((course: CourseI) => (
           <CourseCard
             key={course._id}
             name={course.name}
