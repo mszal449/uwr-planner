@@ -31,7 +31,7 @@ body {
 
 /* Navbar element */
 .navbarElement {
-  @apply hover:text-purple-400 transition ease-in;
+  @apply font-light text-2xl hover:text-purple-400 transition ease-in duration-150;
 }
 
 

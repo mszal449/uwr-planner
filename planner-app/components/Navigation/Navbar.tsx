@@ -3,11 +3,18 @@ import React from 'react'
 import { NavbarProps } from '@/types/props'
 
 
-const Navbar = ({ userName } : NavbarProps) => {
+const Navbar = ({ savePlan } : NavbarProps) => {
   return (
     <main className='flex justify-between items-center w-full px-10 py-4'>
-        <div className='font-bold text-2xl'>{userName}</div>
-        <div className='flex gap-4 font-bold text-xl'>
+      <div className='flex items-center gap-2'>
+        <button 
+          className="text-white font-light py-2 px-4 rounded-md bg-green-500 hover:bg-green-600 transition ease-in duration-150"
+          onClick={savePlan}>
+          Save
+        </button>
+        <div> click course from list, then select semester to assign course to semester; click course in semester column to delete it.</div>
+      </div>
+        <div className='flex gap-4'>
             <Link className='navbarElement' href='/'>Contact</Link>
             <Link className='navbarElement' href='/api/auth/signout?callbackUrl=/'>Logout</Link>
         </div>

@@ -27,5 +27,5 @@ export interface SummaryProps {
 }
 
 export interface NavbarProps {
-    userName: string;
+    savePlan: ()=> void;
 }

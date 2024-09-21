@@ -8,9 +8,16 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, deleteCourse } : Sem
     <div className={`${styles} flex justify-between gap-3`}>
       {plan && plan.semesters.map((semester, index) => (
         <div key={index} className='bg-[#282828] rounded-md w-full p-3' onClick={() => onSelectSemester(index)}>
-          Semestr {index + 1}
-          {semester.map((course) => (
-            <CourseCard key = {course._id}
+          <div className='flex items-end justify-between pb-3'>
+            <div className='text-3xl font-light'>
+              Semestr {index + 1}
+            </div>
+            <div className='text-gray-400'>ECTS: 30/30</div> 
+            {/* todo: calculate ECTS */}
+          </div>
+          <div className='flex flex-col gap-1'>
+            {semester.map((course) => (
+              <CourseCard key = {course._id}
               name = {course.name}
               semester = {course.semester}
               type = {course.type}
@@ -18,8 +25,9 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, deleteCourse } : Sem
               tags = {course.tags}
               effects = {course.effects}
               onClickAction={() => deleteCourse(index, course._id)}
-            />
-          ))}
+              />
+            ))}
+          </div>
         </div>
       ))}
     </div>
