@@ -29,6 +29,16 @@ body {
   background: #555;
 }
 
+/* Navbar element */
+.navbarElement {
+  @apply hover:text-purple-400 transition ease-in;
+}
+
+
+/* Semester */
+.semesterTitle {
+  @apply text-2xl font-semibold;
+}
 
 @layer base {
   :root {

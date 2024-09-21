@@ -18,8 +18,8 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
         <input type="text" placeholder='search' className='font-light p-2 rounded-tl-md rounded-bl-md outline-none w-full bg-[#282828] focus:bg-[#363636] transition ease-in'/>
         <button className='bg-[#282828] rounded-tr-md rounded-br-md px-3 border-none hover:bg-[#363636] transition ease-in'>O</button>
       </div>
-
-      <ScrollArea className='flex flex-col gap-2 h-full overflow-auto '>
+      
+      <ScrollArea className='flex flex-col gap-2 h-full overflow-auto pr-1'>
         {sample_courses.map((course: CourseI) => (
           <CourseCard
             key={course._id}
@@ -32,7 +32,6 @@ const CourseBrowser = ({styles}: CourseBrowserProps) => {
         />))}
         <Scrollbar orientation='vertical' />
       </ScrollArea>
-
     </div>
   )
 }

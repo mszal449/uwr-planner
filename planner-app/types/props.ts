@@ -2,7 +2,6 @@ export interface CourseBrowserProps {
     styles: string | null;
 }
 
-
 export interface CourseCardProps {
     name: string;
     semester: string;
@@ -18,4 +17,8 @@ export interface SemesterPlannerProps {
 
 export interface SummaryProps {
     styles?: string;
+}
+
+export interface NavbarProps {
+    userName: string;
 }
