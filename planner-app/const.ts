@@ -19,7 +19,7 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "PD (przetwarzanie danych)": { shortName: "PD", backgroundColor: "#E1FFC1" },
     "DS (Data Science)": { shortName: "DS", backgroundColor: "#FFC1E1" },
     "Praca zespołowa": { shortName: "PZ", backgroundColor: "#FFDBC1" },
-    "BD (bazy danych)": { shortName: "BD", backgroundColor: "#FFC1E1" },
+    "BD (Bazy danych)": { shortName: "BD", backgroundColor: "#FFC1E1" },
     "E (Ekonomia)": { shortName: "EK", backgroundColor: "#C1F3FF" },
     "IO (Inżynieria oprogramowania)": { shortName: "IO", backgroundColor: "#C1C4FF" },
     "PiPO (Projektowanie i programowanie obiektowe)": { shortName: "PO", backgroundColor: "#C1E1FF" },

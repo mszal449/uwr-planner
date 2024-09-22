@@ -10,11 +10,16 @@ import { educationEffects, CourseTags } from '@/const';
 import { CourseCardProps } from '@/types';
 import { CourseBadge } from '..';
 
-const CourseCard = ({name, semester, type, ects, tags = [], effects = [], onClickAction = () => {}}: CourseCardProps) => {
+const CourseCard = React.memo((
+  {name, semester, type, ects, tags = [], effects = [], 
+    onClickAction = () => {}, doubleClickAction = () => {}, selected}: CourseCardProps) => {
+
   return (
     <Card 
-      className="bg-[#282828] hover:bg-[#363636] transition ease-in text-white border-[#1f1f1f] cursor-pointer "
-      onClick={onClickAction}> {/* selecting course to add from list or selecting course todelete from semester table */}
+      className={`${selected ? "bg-[#c54b8c] hover:bg-[#c54b8c]" : "bg-[#282828] hover:bg-[#363636]"} 
+                  transition ease-in text-white border-[#1f1f1f] cursor-pointer`}
+      onClick={onClickAction}
+      onDoubleClick={doubleClickAction}>
       <CardHeader className='p-4 pb-1'>
         <CardTitle className='font-normal'>{name}</CardTitle>
         <CardDescription className='text-[#8b8b8b]'>
@@ -26,7 +31,6 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = [], onClic
       </CardHeader>
       <CardContent className='px-4 pt-0 pb-2'>
         <div className='flex justify-between w-full'>
-          {/* Tags */}
           <div className="flex flex-wrap gap-1">
             {tags && tags.length > 0 && (
               tags.map((tag: string, index: number) => {
@@ -43,8 +47,6 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = [], onClic
               })
             )}
           </div>
-
-          {/* Effects */}
           <div className="flex flex-wrap gap-1">
             {effects && effects.length > 0 && (
               effects.map((effect, index) => {
@@ -65,6 +67,6 @@ const CourseCard = ({name, semester, type, ects, tags = [], effects = [], onClic
       </CardContent>
     </Card>
   )
-}
+});
 
-export default CourseCard
+export default CourseCard;

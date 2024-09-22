@@ -2,7 +2,7 @@ import React from 'react'
 import { SemesterPlannerProps } from '@/types';
 import CourseCard from './CourseBrowser/CourseCard';
 
-const SemesterPlanner = ( { styles, plan, onSelectSemester, deleteCourse } : SemesterPlannerProps) => {
+const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , deleteCourse, selectedCourseId} : SemesterPlannerProps) => {
 
   return (
     <div className={`${styles} flex justify-between gap-3`}>
@@ -17,14 +17,17 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, deleteCourse } : Sem
           </div>
           <div className='flex flex-col gap-1'>
             {semester.map((course) => (
-              <CourseCard key = {course._id}
-              name = {course.name}
-              semester = {course.semester}
-              type = {course.type}
-              ects = {course.ects.toString()}
-              tags = {course.tags}
-              effects = {course.effects}
-              onClickAction={() => deleteCourse(index, course._id)}
+              <CourseCard 
+                key = {course._id}
+                name = {course.name}
+                semester = {course.semester}
+                type = {course.type}
+                ects = {course.ects.toString()}
+                tags = {course.tags}
+                effects = {course.effects}
+                onClickAction={() => onSelectCourse(course)}
+                doubleClickAction={() => deleteCourse(course._id, index)}
+                selected={selectedCourseId === course._id}
               />
             ))}
           </div>

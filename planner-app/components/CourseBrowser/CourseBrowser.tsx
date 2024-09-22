@@ -6,14 +6,9 @@ import { CourseI } from '@/types'
 import { ScrollArea, Scrollbar} from '@radix-ui/react-scroll-area'
 import { getCourses } from '@/services'
 import Data from '@/types/data'
-
- 
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`
-)
  
 
-const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
+const CourseBrowser = ({styles, onSelectCourse, selectedCourseId}: CourseBrowserProps) => {
   const [courses, setCourses] = useState<Data<CourseI> | null>(null)
   const [search, setSearch] = useState("")
 
@@ -41,8 +36,6 @@ const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
           className='font-light p-2 rounded-md outline-none w-full bg-[#282828] focus:bg-[#363636] transition ease-in'
           value={search}
           onChange={handleSearchChange}/>
-        {/* button not needed in this approach, what do you think? */}
-        {/* <button className='bg-[#282828] rounded-tr-md rounded-br-md px-3 border-none hover:bg-[#363636] transition ease-in'>O</button> */}
       </div>
 
       <ScrollArea className='flex flex-col gap-2 h-full overflow-auto pr-1'>
@@ -56,6 +49,7 @@ const CourseBrowser = ({styles, onSelectCourse}: CourseBrowserProps) => {
             tags={course.tags}
             effects={course.effects}
             onClickAction={() => onSelectCourse(course)}
+            selected={selectedCourseId === course._id}
         />))}
         <Scrollbar orientation='vertical' />
       </ScrollArea>

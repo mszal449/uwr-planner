@@ -13,6 +13,7 @@ export default function PlanView({params}: {params: {id: string}}) {
   function addSelectedCourse(semId: number) {
     if (plan && selectedCourse) {
       const updatedSemesters = plan.semesters.map((semester, index) => {
+        semester = semester.filter(c => c._id !== selectedCourse._id)
         if (index === semId) {
           return [...semester, selectedCourse];
         }
@@ -23,7 +24,7 @@ export default function PlanView({params}: {params: {id: string}}) {
     }
   }  
 
-  function deleteSelectedCourse(semId: number, courseId: string) {
+  function deleteCourse(courseId: string, semId: number) {
     if (plan) {
       const updatedSemesters = plan.semesters.map((semester, index) => {
         if (index === semId) {
@@ -32,6 +33,7 @@ export default function PlanView({params}: {params: {id: string}}) {
         return semester;
       });
       setPlan({...plan, semesters: updatedSemesters});
+      setSelectedCourse(null);
     }
   }
 
@@ -45,7 +47,6 @@ export default function PlanView({params}: {params: {id: string}}) {
     const getdata = async () => {
       if (params.id) {
         const data = await getPlanById(params.id)
-        console.log(data)
         setPlan(data)
       }
     }
@@ -54,28 +55,21 @@ export default function PlanView({params}: {params: {id: string}}) {
 
   return (
     <div className="flex flex-col h-screen "> 
-      {/* todo: to be changed to normal navbar XD */}
-      {/* <div className="p-4">
-        <button 
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          onClick={savePlan}>
-          Save
-        </button>
-        click course from list, then select semester to assign course to semester; click course in semester column to delete it.
-      </div> */}
       <Navbar savePlan={savePlan}/>
-
-      {/*  */}
       <div className="flex-grow grid grid-cols-12 gap-4 px-5 min-h-0">
         <CourseBrowser 
           styles="col-start-1 col-end-3 overflow-auto" 
-          onSelectCourse={(c: CourseI) => setSelectedCourse(c)} />
+          onSelectCourse={(c: CourseI) => setSelectedCourse(c)}
+          selectedCourseId={selectedCourse?._id || null}
+        />
         <SemesterPlanner 
           styles="col-start-3 col-end-13" 
           plan={plan}
           onSelectSemester={(semId: number) => addSelectedCourse(semId)}
-          deleteCourse={(semId: number, courseId: string) => deleteSelectedCourse(semId, courseId)}
-          />
+          onSelectCourse={(c: CourseI) => setSelectedCourse(c)}
+          deleteCourse={(courseId: string, semId: number) => deleteCourse(courseId, semId)}
+          selectedCourseId={selectedCourse?._id || null}
+        />
       </div>
       <Summary styles="mt-3 h-10"/>
     </div>

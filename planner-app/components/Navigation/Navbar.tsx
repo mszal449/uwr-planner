@@ -12,7 +12,7 @@ const Navbar = ({ savePlan } : NavbarProps) => {
           onClick={savePlan}>
           Save
         </button>
-        <div> click course from list, then select semester to assign course to semester; click course in semester column to delete it.</div>
+        <div> click course, then select semester to assign course to semester; double click course in semester column to delete it.</div>
       </div>
         <div className='flex gap-4'>
             <Link className='navbarElement' href='/'>Contact</Link>

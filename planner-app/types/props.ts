@@ -3,6 +3,7 @@ import { CourseI, PlanI } from "./models";
 export interface CourseBrowserProps {
     styles: string | null;
     onSelectCourse: (c: CourseI) => void
+    selectedCourseId: string | null
 }
 
 export interface CourseCardProps {
@@ -13,13 +14,17 @@ export interface CourseCardProps {
     tags: string[] | null;
     effects: string[] | null;
     onClickAction: () => void | null
+    doubleClickAction?: () => void | null
+    selected: boolean
   }
 
 export interface SemesterPlannerProps {
     styles: string | null;
     plan: PlanI | null;
     onSelectSemester: (id: number) => void;
-    deleteCourse: (semId: number, courseId: string) => void
+    onSelectCourse: (c: CourseI) => void;
+    deleteCourse: (courseId: string, semId: number) => void;
+    selectedCourseId: string | null
 }
 
 export interface SummaryProps {
