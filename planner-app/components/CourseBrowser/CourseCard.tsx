@@ -22,7 +22,7 @@ const CourseCard = React.memo((
       onDoubleClick={doubleClickAction}>
       <CardHeader className='p-4 pb-1'>
         <CardTitle className='font-normal'>{name}</CardTitle>
-        <CardDescription className='text-[#8b8b8b]'>
+        <CardDescription className='text-[#8b8b8b] select-none'>
           <span className='flex flex-col justify-between items-start gap-1'>
             <span>{type}</span>
             <span>{semester} | {ects} ECTS</span>
