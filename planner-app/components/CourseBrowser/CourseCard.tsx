@@ -40,7 +40,7 @@ const CourseCard = React.memo((
                     key={index}
                     text={tag}
                     shortText={courseTag.shortName}
-                    textColor={"#ffffff"}
+                    textColor={"#c8c8c8"}
                     bgColor={courseTag.backgroundColor}
                   />
                 );

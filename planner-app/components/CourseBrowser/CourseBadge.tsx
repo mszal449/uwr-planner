@@ -16,7 +16,7 @@ const CourseBadge = ( {text, shortText, textColor, bgColor}: CourseBadgeProps) =
       {shortText}
       </HoverCardTrigger>
       <HoverCardContent>
-        <div className="p-3 bg-[#3a3a3a] text-white rounded-md transition ease-in">
+        <div className="p-1 bg-[#333333] text-[#d6d6d6] rounded-md border-none outline-none">
           {text}
         </div>
       </HoverCardContent>
