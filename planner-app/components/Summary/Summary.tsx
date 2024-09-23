@@ -4,52 +4,71 @@ import { CourseI, SummaryProps } from '@/types'
 import { bachelorRequirements, OIKP } from '@/const';
 import { useEffect } from 'react';
 import { usePlanContext } from '@/context/PlanContext';
-import { requiredTags } from '@/const';
+import { setEngine } from 'crypto';
+
+const defaultTags = {
+  "RPiS": false,
+  "IO": false,
+  "PiPO": false,
+  "ASK": false,
+  "SO": false,
+  "SK": false,
+  "BD": false,
+}
 
 const Summary = ( { styles }: SummaryProps ) => {
   const { plan } = usePlanContext();
-  const [totalEcts, setTotalEcts] = React.useState(0);
+  const [totalEcts, setTotalEcts] = React.useState(0);        // 170
+  const [itEcts, setItEcts] = React.useState(0);              // 66
+  const [engineerEcts, setEngineerEcts] = React.useState(0);  // 12
+  const [engineerCourseEcts, setEngineerCourseEcts] = React.useState(0); // 10
+  const [itCoursesEcts, setItCoursesEcts] = React.useState(0);
   const [OIKPECTS, setOIKPECTS] = React.useState(0);
   const [proseminar, setProseminar] = React.useState(false);
   const [humanisticEcts, setHumanisticEcts] = React.useState(0);
   const [OWI, setOWI] = React.useState(false);
   const [economical, setEconomical] = React.useState(false);
-  const [tags, setTags] = React.useState<{ [key: string]: boolean }>({
-    "RPiS": false,
-    "IO": false,
-    "PiPO": false,
-    "ASK": false,
-    "SO": false,
-    "SK": false,
-    "BD": false,
-  });
+  const [tags, setTags] = React.useState<{ [key: string]: boolean }>(defaultTags);
+  
 
 
   useEffect(() => { 
     if (plan) {
       let totalEctsAcc = 0;
+      let itEcts = 0;
+      let engineerEcts = 0;
+      let engineerCourseEcts = 0;
       let proseminar = false;
       let OIKPECTS = 0;
       let humanisticEcts = 0;
       let OWI = false
       let economical = false
-      let tags = {
-        "RPiS": false,
-        "IO": false,
-        "PiPO": false,
-        "ASK": false,
-        "SO": false,
-        "SK": false,
-        "BD": false,
-      }
+      let tags = {...defaultTags}
   
       plan.semesters.forEach(semester => {
         semester.forEach((course: CourseI) => {
           totalEctsAcc += course.ects;
-  
+          
+          if (["Informatyczny", 
+            "Informatyczny 1", 
+            "Informatyczny 2", 
+            "Informatyczny 3", 
+            "Informatyczny in.",]
+            .includes(course.type)) {
+            itEcts += course.ects;
+          }
+
           if (course.type && OIKP.type.includes(course.type)) {
             OIKPECTS += course.ects;
           }
+          if (course.type == "Informatyczny inż.") {
+            engineerEcts += course.ects
+          }
+
+          if (course.type == "Kurs inżynierski") {
+            engineerCourseEcts += course.ects
+          }
+
           
           if (course.type === "Proseminarium") {
             proseminar = true
@@ -59,10 +78,12 @@ const Summary = ( { styles }: SummaryProps ) => {
             humanisticEcts += course.ects;
           }
 
+
           if (course.name === "Ochrona własności intelektualnej") {
             OWI = true;
           }
 
+          
           if (course.tags?.includes("E (Ekonomia)")) {
             economical = true;
           }
@@ -76,8 +97,6 @@ const Summary = ( { styles }: SummaryProps ) => {
               }
             });
           }
-
-
         });
       });
   
@@ -87,6 +106,9 @@ const Summary = ( { styles }: SummaryProps ) => {
       setHumanisticEcts(humanisticEcts);
       setOWI(OWI);
       setEconomical(economical);
+      setEngineerEcts(engineerEcts);
+      setEngineerCourseEcts(engineerCourseEcts);
+      setItCoursesEcts(itEcts);
       setTags(tags);
     }
   }, [plan]);
@@ -94,23 +116,21 @@ const Summary = ( { styles }: SummaryProps ) => {
 
   return (
     <div className={`${styles} bg-[#282828] flex flex-col md:flex-row justify-center items-center px-5 gap-3`}>
-      <div className={`${ totalEcts < bachelorRequirements.totalECTS ? "text-red-500" : "text-green-500"}`}>
-        {totalEcts}/{bachelorRequirements.totalECTS} ECTS
-      </div>
-      <div>
-        <span className={`rounded-md p-1 ${ OIKPECTS <= OIKP.bachelor.ects ? "text-red-500" : "text-green-500"}`}>O+I+K+P: {OIKPECTS}/{bachelorRequirements.OIKPECTS} ECTS</span>
-      </div>
-        <div className={`rounded-md p-1 ${ proseminar ? "text-green-500" : "text-red-500"}`}>Proseminarium: {proseminar ? <span>true</span> : <span>false</span>}</div>
-        <div className={`rounded-md p-1 ${ humanisticEcts < 5 ? "text-red-500" : "text-green-500"}`}>Humianistyczno-społeczny: {humanisticEcts}/5 ECTS</div>
-        <div className={`${OWI ? "text-green-500" : "text-red-500"}`}>OWI</div>
-        <div className={`${economical ? "text-green-500" : "text-red-500"}`}>E</div>
-        <h3>Wyniki tagów:</h3>
-        {Object.entries(tags).map(([tag]) => (
-          <div key={tag} className={tags[tag] ? "text-green-500" : "text-red-500"}>
-            {tag}
-          </div>
-        ))}      
+      <div className={`${ totalEcts < 210 ? "text-red-500" : "text-green-500"}`}>{totalEcts}/{210} ECTS</div>
+      <div className={`rounded-md p-1 ${ OIKPECTS < OIKP.engineer.ects ? "text-red-500" : "text-green-500"}`}>O+I+K+P: {OIKPECTS}/{OIKP.engineer.ects} ECTS</div>
+      <div className={`rounded-md p-1 ${ engineerEcts < 12 ? "text-red-500" : "text-green-500"}`}>I.inż: {engineerEcts}/12 ECTS</div>
+      <div className={`rounded-md p-1 ${ engineerCourseEcts < 10 ? "text-red-500" : "text-green-500"}`}>K.inż: {engineerCourseEcts}/10 ECTS</div>
+      <div className={`rounded-md p-1 ${ proseminar ? "text-green-500" : "text-red-500"}`}>Proseminarium</div>
+      <div className={`rounded-md p-1 ${ humanisticEcts < 5 ? "text-red-500" : "text-green-500"}`}>Humianistyczno-społeczny: {humanisticEcts}/5 ECTS</div>
+      <div className={`${OWI ? "text-green-500" : "text-red-500"}`}>OWI</div>
+      <div className={`${economical ? "text-green-500" : "text-red-500"}`}>E</div>
+      <h3>Tagi:</h3>
+      {Object.entries(tags).map(([tag]) => (
+        <div key={tag} className={tags[tag] ? "text-green-500" : "text-red-500"}>
+          {tag}
         </div>
+      ))}      
+      </div>
   )
 }
 
