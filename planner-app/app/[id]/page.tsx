@@ -5,9 +5,11 @@ import { updatePlan } from "@/services/planService";
 import { CourseI, PlanI } from "@/types";
 import { useEffect, useState } from "react";
 import { Navbar } from "@/components";
+import { usePlanContext } from "../../context/PlanContext";
+
 
 export default function PlanView({params}: {params: {id: string}}) {
-  const [plan, setPlan] = useState<PlanI | null>(null)
+  const { plan, setPlan } = usePlanContext();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
 
   function addSelectedCourse(semId: number) {
@@ -50,13 +52,13 @@ export default function PlanView({params}: {params: {id: string}}) {
   useEffect(() => {
     const getdata = async () => {
       if (params.id) {
-        const data = await getPlanById(params.id)
-        setPlan(data)
+        const data = await getPlanById(params.id);
+        setPlan(data);
       }
-    }
-    getdata()
+    };
+    getdata();
   }, [params.id]);
-
+  
   return (
     <div className="flex flex-col h-screen "> 
       <Navbar savePlan={savePlan}/>
@@ -65,7 +67,7 @@ export default function PlanView({params}: {params: {id: string}}) {
           styles="col-start-1 col-end-3 overflow-auto" 
           onSelectCourse={(c: CourseI) => setSelectedCourse(c)}
           selectedCourseId={selectedCourse?._id || null}
-        />
+          />
         <SemesterPlanner 
           styles="col-start-3 col-end-13" 
           plan={plan}

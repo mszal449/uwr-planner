@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { SemesterPlannerProps } from '@/types';
 import CourseCard from './CourseBrowser/CourseCard';
@@ -18,17 +19,15 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
     return ects
   }
 
-
   return (
-    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll`}>
+    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll `}>
       {plan && plan.semesters.map((semester, index) => (
-        <div key={index} className='bg-[#282828] rounded-md w-full p-3 min-w-[180px]' onClick={() => onSelectSemester(index)}>
+        <div key={index} className='bg-[#282828] rounded-md w-full p-3 min-w-[180px] overflow-scroll no-scrollbar' onClick={() => onSelectSemester(index)}>
           <div className='pb-3'>
             <div className='text-3xl font-light truncate'>
               {index + 1} Semestr 
             </div>
             <div className='text-gray-400 truncate'>{calculateEcts(index)}/{30 * (index + 1)} ECTS</div> 
-            {/* todo: calculate ECTS */}
           </div>
           <div className='flex flex-col gap-1'>
             {semester.map((course) => (

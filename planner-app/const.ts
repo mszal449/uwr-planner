@@ -1,3 +1,48 @@
+
+export const bachelorRequirements = {
+  totalECTS: 180,
+  OIKPECTS: 140,
+  przedmiotyObowiazkowe: [
+    "Analiza matematyczna",
+    "Logika dla informatyków",
+    "Algebra",
+    "Metody programowania",
+    "Analiza numeryczna L",
+    "Matematyka dyskretna L",
+    "Algorytmy i struktury danych L"
+  ],
+  przedmiotyInformatyczne: {
+    requiredECTS: 54,
+    courses: [
+      "Informatyczny",
+      "Informatyczny 1",
+      "Informatyczny 2",
+      "Informatyczny 3",
+      "Informatyczny inż.",
+    ]
+  },
+  tags: [
+    "RPiS (Rachunek prawdopodobieństwa i statystyka)",
+    "IO (Inżynieria oprogramowania)",
+    "PiPO (Projektowanie i programowanie obiektowe)",
+    "ASK (Architektury systemów komputerowych)",
+    "SO (systemy operacyjne)",
+    "SK (sieci komputerowe)",
+    "BD (Bazy danych)",
+  ],
+  other: {
+    curses: ["Ochrona własności intelektualnej"],
+    type: ["Proseminarium", "Humanistyczno-społeczny"]
+  }
+}
+
+
+export const przedmiotyInżynierskie = {
+  requiredECTS: 10,
+  courses: ["Kurs inżynierski"]
+}
+
+
 export const educationEffects: { [key: string]: { shortName: string, backgroundColor: string } } = {
     "Podstawy informatyki i programowania": { shortName: "PI", backgroundColor: "#FFC1E1" },
     "Programowanie i projektowanie obiektowe": { shortName: "PO", backgroundColor: "#C1E1FF" },
@@ -32,4 +77,3 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "AZ (algorytmika i złożoność obliczeniowa)" : { shortName: "AZ", backgroundColor: "#FFC1E1" },
     "default": { shortName: "N/A", backgroundColor: "#C1FFF3" }
   };
-  
