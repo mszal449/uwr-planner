@@ -4,9 +4,9 @@ import { SemesterPlannerProps } from '@/types';
 import CourseCard from './CourseBrowser/CourseCard';
 
 const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , deleteCourse, selectedCourseId} : SemesterPlannerProps) => {
-  const [ects, setEcts] = React.useState([0, 0, 0, 0, 0, 0])
+  const [ects, setEcts] = React.useState([0, 0, 0, 0, 0, 0, 0])
   useEffect(() => {
-    let ects = [0, 0, 0, 0, 0, 0]
+    let ects = [0, 0, 0, 0, 0, 0, 0]
     plan?.semesters.forEach((semester, index) => {
       semester.forEach(course => {
         ects[index] += course.ects

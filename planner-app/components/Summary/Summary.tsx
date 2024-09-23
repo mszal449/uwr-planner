@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { CourseI, SummaryProps } from '@/types'
-import { bachelorRequirements, OIKP } from '@/const';
+import { OIKP } from '@/const';
 import { useEffect } from 'react';
 import { usePlanContext } from '@/context/PlanContext';
 import { setEngine } from 'crypto';
@@ -22,7 +22,6 @@ const Summary = ( { styles }: SummaryProps ) => {
   const [itEcts, setItEcts] = React.useState(0);              // 66
   const [engineerEcts, setEngineerEcts] = React.useState(0);  // 12
   const [engineerCourseEcts, setEngineerCourseEcts] = React.useState(0); // 10
-  const [itCoursesEcts, setItCoursesEcts] = React.useState(0);
   const [OIKPECTS, setOIKPECTS] = React.useState(0);
   const [proseminar, setProseminar] = React.useState(false);
   const [humanisticEcts, setHumanisticEcts] = React.useState(0);
@@ -53,7 +52,7 @@ const Summary = ( { styles }: SummaryProps ) => {
             "Informatyczny 1", 
             "Informatyczny 2", 
             "Informatyczny 3", 
-            "Informatyczny in.",]
+            "Informatyczny inż.",]
             .includes(course.type)) {
             itEcts += course.ects;
           }
@@ -108,7 +107,7 @@ const Summary = ( { styles }: SummaryProps ) => {
       setEconomical(economical);
       setEngineerEcts(engineerEcts);
       setEngineerCourseEcts(engineerCourseEcts);
-      setItCoursesEcts(itEcts);
+      setItEcts(itEcts);
       setTags(tags);
     }
   }, [plan]);
@@ -118,6 +117,7 @@ const Summary = ( { styles }: SummaryProps ) => {
     <div className={`${styles} bg-[#282828] flex flex-col md:flex-row justify-center items-center px-5 gap-3`}>
       <div className={`${ totalEcts < 210 ? "text-red-500" : "text-green-500"}`}>{totalEcts}/{210} ECTS</div>
       <div className={`rounded-md p-1 ${ OIKPECTS < OIKP.engineer.ects ? "text-red-500" : "text-green-500"}`}>O+I+K+P: {OIKPECTS}/{OIKP.engineer.ects} ECTS</div>
+      <div className={`rounded-md p-1 ${ itEcts < 66 ? "text-red-500" : "text-green-500"}`}>Inf: {itEcts}/66 ECTS</div>
       <div className={`rounded-md p-1 ${ engineerEcts < 12 ? "text-red-500" : "text-green-500"}`}>I.inż: {engineerEcts}/12 ECTS</div>
       <div className={`rounded-md p-1 ${ engineerCourseEcts < 10 ? "text-red-500" : "text-green-500"}`}>K.inż: {engineerCourseEcts}/10 ECTS</div>
       <div className={`rounded-md p-1 ${ proseminar ? "text-green-500" : "text-red-500"}`}>Proseminarium</div>
