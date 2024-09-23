@@ -10,10 +10,11 @@ export interface CourseI {
 
 export interface PlanI {
     _id: string,
+    user: string,
     name: string,
     degree: "engineer" | "bachelor"
     semesters: CourseI[][]
-}
+}  
 
 // todo: change interface while adding authentication
 export interface UserI {

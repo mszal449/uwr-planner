@@ -34,3 +34,9 @@ export interface SummaryProps {
 export interface NavbarProps {
     savePlan: ()=> void;
 }
+
+export interface AddPlanProps {
+    name: string,
+    user: string,
+    degree: "engineer" | "bachelor",
+}
