@@ -1,4 +1,5 @@
 import { DataI } from "@/types";
+import { Interface } from "readline";
 
 export async function getAll<T>(name: string): Promise<DataI<T>> {
     const response = await fetch(`http://localhost:3000/api/${name}`)

@@ -17,7 +17,7 @@ export async function getPlanById(id: string): Promise<PlanI | null> {
     return getById(urlString, id) 
 }
 
-export async function addPlan(Plan: AddPlanProps): Promise<PlanI> {
+export async function addPlan(Plan: PlanI): Promise<PlanI> {
     return addRecord(urlString, Plan)
 }
 

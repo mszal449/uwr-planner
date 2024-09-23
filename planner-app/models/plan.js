@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import {CourseSchema} from "./course"
 
 const PlanSchema = new mongoose.Schema({
-    user_id: String,
+    user: String,
     name: String,
     degree: String,
     semesters: {type: [[CourseSchema]], default: [[], [], [], [], [], [], []]},

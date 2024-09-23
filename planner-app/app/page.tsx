@@ -43,17 +43,18 @@ export default function Home() {
       return
     }
 
-    const newPlan: AddPlanProps = {
+    const newPlan: PlanI = {
       user: session?.user.id,
       name: newPlanName,
       degree: 'engineer',
     };
+    
     const plan = await addPlan(newPlan);
     console.log(plan);
     console.log(`http://localhost:3000${plan._id}`);
-    router.push(`/${plan._id}`); // zamiast redirect()
-  };
-
+    router.push(`/${plan._id}`);
+  }
+  
   return (
     <div>
       <div>Wybierz swój plan</div>
