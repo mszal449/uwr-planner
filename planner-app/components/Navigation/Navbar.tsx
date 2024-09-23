@@ -5,7 +5,7 @@ import { NavbarProps } from '@/types/props'
 
 const Navbar = ({ savePlan } : NavbarProps) => {
   return (
-    <main className='flex justify-between items-center w-full px-10 py-4'>
+    <main className='flex justify-between items-center w-full px-10 py-2'>
       <div className='flex items-center gap-2'>
         <button 
           className="text-white font-light py-2 px-4 rounded-md bg-green-500 hover:bg-green-600 transition ease-in duration-150"

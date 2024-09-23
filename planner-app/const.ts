@@ -1,3 +1,37 @@
+export const OIKP = {
+  bachelor: {
+    ects: 140,
+  },
+  engineer: {
+    ects: 170
+  },
+  type: [
+    "Informatyczny", 
+    "Informatyczny 1", 
+    "Informatyczny 2", 
+    "Informatyczny 3", 
+    "Informatyczny inż.",
+    'Obowiązkowy 1', 
+    'Obowiązkowy 2', 
+    'Obowiązkowy 3',
+    'Kurs',
+    'K1 - kurs podstawowy',
+    'K2 - kurs zaawansowany',
+    'Kurs inżynierski',
+    'Projekt'
+  ]
+}
+
+export const requiredTags = {
+  "ASK (Architektury systemów komputerowych)": "ASK",
+  "RPiS (Rachunek prawdopodobieństwa i statystyka)": "RPiS",
+  "IO (Inżynieria oprogramowania)": "IO",
+  "PiPO (Projektowanie i programowanie obiektowe)": "PiPO",
+  "SO (systemy operacyjne)": "SO",
+  "SK (sieci komputerowe)": "SK",
+  "BD (Bazy danych)": "BD",
+}
+
 
 export const bachelorRequirements = {
   totalECTS: 180,

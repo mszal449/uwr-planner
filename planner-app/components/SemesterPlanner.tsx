@@ -20,9 +20,9 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
 
 
   return (
-    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll `}>
+    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll no-scrollbar`}>
       {plan && plan.semesters.map((semester, index) => (
-        <div key={index} className='bg-[#282828] rounded-md w-full p-3 min-w-[180px] overflow-scroll no-scrollbar' onClick={() => onSelectSemester(index)}>
+        <div key={index} className='bg-[#282828] rounded-md w-full p-2 min-w-[180px] overflow-scroll no-scrollbar' onClick={() => onSelectSemester(index)}>
           <div className='pb-3'>
             <div className='text-3xl font-light truncate'>
               {index + 1} Semestr 
