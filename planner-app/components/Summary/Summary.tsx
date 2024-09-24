@@ -92,7 +92,6 @@ const Summary = ( { styles }: SummaryProps ) => {
           if (course.tags) {
             course.tags.forEach(tag => {
               const tagKey = tag.split(" ")[0] as keyof typeof tags;
-              console.log(`tagKey: ${tagKey}`)
               if (tagKey in tags) { 
                 tags[tagKey] = true;
               }
