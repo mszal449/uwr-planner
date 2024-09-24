@@ -39,13 +39,14 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "Architektury systemów komputerowych": { shortName: "AS", backgroundColor: "#FFC1C1" },
     "Rachunek prawdopodobieństwa (L)": { shortName: "RP", backgroundColor: "#C1FFC1" },
     "Systemy operacyjne": { shortName: "SO", backgroundColor: "#F3C1FF" },
-    "Sieci komputerowe": { shortName: "SK", backgroundColor: "#C1FFF3" },
     "Bazy danych": { shortName: "BD", backgroundColor: "#FFD5C1" },
     "Podstawy inżynierii oprogramowania": { shortName: "IO", backgroundColor: "#C1C4FF" },
     "Inżynieria oprogramowania (L)": { shortName: "IL", backgroundColor: "#FFD1C1" },
     "Rachunek prawdopodobieństwa (I)": { shortName: "RI", backgroundColor: "#C1FFDD" },
     "Społeczno-ekonomiczne aspekty informatyki (I)": { shortName: "SE", backgroundColor: "#FFC1E1" },
     "Systemy operacyjne": { shortName: "SO", backgroundColor: "#F3C1FF" },
+    "SK (Sieci komputerowe)": { shortName: "SK", backgroundColor: "#F3C1FF" },
+    "Praca zespołowa": { shortName: "PZ", backgroundColor: "#F3C1FF" },
     "default": { shortName: "N/A", backgroundColor: "#C1FFF3" },
   };
   
