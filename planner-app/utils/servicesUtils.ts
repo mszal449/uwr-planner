@@ -1,7 +1,7 @@
 import { DataI } from "@/types";
 
 export async function getAll<T>(name: string): Promise<DataI<T>> {
-    const response = await fetch(`${process.env.URL}${name}`)
+    const response = await fetch(`${process.env.URL}/api/${name}`)
     if(!response.ok) {
         throw new Error(`Error: status ${response.status}`);
     }
@@ -16,16 +16,17 @@ export async function getWithFilters<T>(name: string, filters: Record<string, an
             searchParams.append(key, filters[key]);
         }
     });
-    const response = await fetch(`${process.env.URL}${name}?${searchParams.toString()}`);
+    const response = await fetch(`${process.env.URL}/api/${name}?${searchParams.toString()}`);
     if (!response.ok) {
         throw new Error(`Error: status ${response.status}`);
     }
     const data = await response.json();
+    
     return data;
 }
 
 export async function getById<T>(name: string, id: string): Promise<T | null> {
-    const response = await fetch(`${process.env.URL}${name}/${id}`);
+    const response = await fetch(`${process.env.URL}/api/${name}/${id}`);
     if (!response.ok) {
         return null;
     }
@@ -34,7 +35,7 @@ export async function getById<T>(name: string, id: string): Promise<T | null> {
 }
 
 export async function addRecord<T>(name: string, record: T): Promise<T> {
-    const response = await fetch(`${process.env.URL}${name}`, {
+    const response = await fetch(`${process.env.URL}/api/${name}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -49,7 +50,7 @@ export async function addRecord<T>(name: string, record: T): Promise<T> {
 }
 
 export async function updateRecord<T>(name: string, id: string, updatedRecord: T): Promise<T> {
-    const response = await fetch(`${process.env.URL}${name}/${id}`, {
+    const response = await fetch(`${process.env.URL}/api/${name}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

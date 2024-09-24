@@ -26,6 +26,7 @@ export default function Home() {
 
     const getdata = async () => {
       const data = await getPlans({ user: session?.user.id });
+
       setPlans(data);
     };
     getdata();
