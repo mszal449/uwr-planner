@@ -54,7 +54,9 @@ const Summary = ( { styles }: SummaryProps ) => {
             "Informatyczny 1", 
             "Informatyczny 2", 
             "Informatyczny 3", 
-            "Informatyczny inż.",]
+            "Informatyczny inż.",
+            "I2.T - teoria inf.",
+            "I2.Z - zastosowania inf."]
             .includes(course.type)) {
             itEcts += course.ects;
           }
@@ -70,8 +72,7 @@ const Summary = ( { styles }: SummaryProps ) => {
             engineerCourseEcts += course.ects
           }
 
-          
-          if (course.type === "Proseminarium") {
+          if (course.type === "Proseminarium" || course.name === "Seminarium") {
             proseminar = true
           }
           

@@ -11,6 +11,8 @@ export const OIKP = {
     "Informatyczny 2", 
     "Informatyczny 3", 
     "Informatyczny inż.",
+    "I2.T - teoria inf.",
+    "I2.Z - zastosowania inf.",
     'Obowiązkowy 1', 
     'Obowiązkowy 2', 
     'Obowiązkowy 3',
