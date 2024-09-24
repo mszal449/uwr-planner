@@ -26,7 +26,7 @@ export async function updatePlan(user: UserI, plan: PlanI, id: string) {
         ...user,
         plans: updatedPlans
     };
-    const response = await fetch(`http://localhost:3000/api/${urlString}`, {
+    const response = await fetch(`${process.env.URL}${urlString}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
