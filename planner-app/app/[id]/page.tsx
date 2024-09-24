@@ -1,4 +1,4 @@
-'use client'
+import useSWR from 'swr';
 import { SemesterPlanner, CourseBrowser, Summary } from "@/components";
 import { getPlanById } from "@/services";
 import { updatePlan } from "@/services/planService";
@@ -9,7 +9,6 @@ import { usePlanContext } from "../../context/PlanContext";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-
 export default function PlanView({params}: {params: {id: string}}) {
   const { plan, setPlan } = usePlanContext();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
@@ -19,6 +18,12 @@ export default function PlanView({params}: {params: {id: string}}) {
     onUnauthenticated() {
       router.push('/api/auth/signin?callbackUrl=/');
     },
+  });
+
+  // Disable SWR re-fetching on focus and reconnect
+  const { data, error } = useSWR(params.id ? `/api/plans/${params.id}` : null, getPlanById, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
   });
 
   function addSelectedCourse(semId: number) {
