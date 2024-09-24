@@ -11,13 +11,13 @@ export default function Home() {
   const [plans, setPlans] = useState<Data<PlanI> | null>(null);
   const [newPlanName, setNewPlanName] = useState<string>('');
   const [planExists, setPlanExists] = useState<boolean>(false);
+  const router = useRouter();
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
       router.push('/api/auth/signin?callbackUrl=/');
     },
   });
-  const router = useRouter();
 
   useEffect(() => {
     if (!session) {
@@ -56,14 +56,12 @@ export default function Home() {
   }
   
   return (
-    <div>
-      <div>Wybierz swój plan</div>
+    <div className="min-h-screen flex flex-col justify-start items-center pt-[10%] gap-3">
+      <div className="text-2xl">Choose plan</div>
       {plans?.result.map((plan) => (
-        <div key={plan._id}>
-          <a href={`/${plan._id}`}>
+        <a href={`/${plan._id}`} className="bg-gray-800 rounded-md p-2" key={plan._id}>
             {plan.name} - {plan.degree}
-          </a>
-        </div>
+        </a>
       ))}
       <div className="flex">
         <input
@@ -79,7 +77,7 @@ export default function Home() {
           New Plan
         </div>
       </div>
-      {planExists && <div className="text-red-500">Plan o takiej nazwie już istnieje</div>}
+      {planExists && <div className="text-red-500">Plan with this name already exists</div>}
     </div>
   );
 }

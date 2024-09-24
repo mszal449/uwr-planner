@@ -12,9 +12,14 @@ import { useRouter } from "next/navigation";
 
 export default function PlanView({params}: {params: {id: string}}) {
   const { plan, setPlan } = usePlanContext();
-  const { data: session } = useSession();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
   const router = useRouter();
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push('/api/auth/signin?callbackUrl=/');
+    },
+  });
 
   function addSelectedCourse(semId: number) {
     if (plan && plan.semesters && selectedCourse) {
@@ -58,7 +63,6 @@ export default function PlanView({params}: {params: {id: string}}) {
       if (params.id && session) {
         const data = await getPlanById(params.id);
         if (data?.user != session.user.id) {
-          console.log("User not authorized to view this plan");
           router.push('/');
         } 
         setPlan(data);
@@ -69,7 +73,7 @@ export default function PlanView({params}: {params: {id: string}}) {
   
   return (
     <div className="flex flex-col h-screen "> 
-      <Navbar savePlan={savePlan}/>
+      <Navbar planName={plan?.name} savePlan={savePlan}/>
       <div className="flex-grow grid grid-cols-12 gap-4 px-5 min-h-0">
         <CourseBrowser 
           styles="col-start-1 col-end-3 overflow-auto" 

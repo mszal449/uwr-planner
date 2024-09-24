@@ -16,7 +16,6 @@ export async function getWithFilters<T>(name: string, filters: Record<string, an
             searchParams.append(key, filters[key]);
         }
     });
-    console.log(`http://localhost:3000/api/${name}?${searchParams.toString()}`)
     const response = await fetch(`http://localhost:3000/api/${name}?${searchParams.toString()}`);
     if (!response.ok) {
         throw new Error(`Error: status ${response.status}`);
@@ -28,7 +27,6 @@ export async function getWithFilters<T>(name: string, filters: Record<string, an
 export async function getById<T>(name: string, id: string): Promise<T | null> {
     const response = await fetch(`http://localhost:3000/api/${name}/${id}`);
     if (!response.ok) {
-        console.log(response);
         return null;
     }
     const data = await response.json();

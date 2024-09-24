@@ -49,7 +49,6 @@ export async function getReq(
   });
 
   const data = await model.find(params);
-  console.log(params)
   const maxLength = data.length;
   const result = data.slice();
   return NextResponse.json({result, maxLength})

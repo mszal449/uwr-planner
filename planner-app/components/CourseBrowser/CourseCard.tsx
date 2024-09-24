@@ -16,8 +16,10 @@ const CourseCard = React.memo((
 
   return (
     <Card 
-      className={`${selected ? "bg-[#c54b8c] hover:bg-[#c54b8c]" : "bg-[#282828] hover:bg-[#363636]"} 
-                  transition ease-in text-white border-[#1f1f1f] cursor-pointer`}
+      className={`bg-[#282828] border-2 transition ease-in text-white cursor-pointer
+         ${selected ? 
+        "border-purple-400 hover:border-purple-500 bg-[#3b3b3b]"  : 
+        "border-[#1f1f1f] bg-[#282828] hover:bg-[#363636]"} `}
       onClick={onClickAction}
       onDoubleClick={doubleClickAction}>
       <CardHeader className='p-4 pb-1'>

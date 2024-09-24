@@ -11,7 +11,7 @@ interface CourseBadgeProps {
 const CourseBadge = ( {text, shortText, textColor, bgColor}: CourseBadgeProps) => {
 
   return (
-    <HoverCard openDelay={200} closeDelay={200}>
+    <HoverCard openDelay={150} closeDelay={150}>
       <HoverCardTrigger className={`bg-[${bgColor}] text-[${textColor}] rounded-md px-2 py-1 text-sm border border-white`}>
       {shortText}
       </HoverCardTrigger>
