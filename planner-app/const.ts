@@ -44,7 +44,6 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "Inżynieria oprogramowania (L)": { shortName: "IL", backgroundColor: "#FFD1C1" },
     "Rachunek prawdopodobieństwa (I)": { shortName: "RI", backgroundColor: "#C1FFDD" },
     "Społeczno-ekonomiczne aspekty informatyki (I)": { shortName: "SE", backgroundColor: "#FFC1E1" },
-    "Systemy operacyjne": { shortName: "SO", backgroundColor: "#F3C1FF" },
     "SK (Sieci komputerowe)": { shortName: "SK", backgroundColor: "#F3C1FF" },
     "Praca zespołowa": { shortName: "PZ", backgroundColor: "#F3C1FF" },
     "default": { shortName: "N/A", backgroundColor: "#C1FFF3" },
