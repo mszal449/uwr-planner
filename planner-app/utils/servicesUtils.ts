@@ -1,5 +1,4 @@
 import { DataI } from "@/types";
-import { Interface } from "readline";
 
 export async function getAll<T>(name: string): Promise<DataI<T>> {
     const response = await fetch(`http://localhost:3000/api/${name}`)
@@ -17,7 +16,7 @@ export async function getWithFilters<T>(name: string, filters: Record<string, an
             searchParams.append(key, filters[key]);
         }
     });
-
+    console.log(`http://localhost:3000/api/${name}?${searchParams.toString()}`)
     const response = await fetch(`http://localhost:3000/api/${name}?${searchParams.toString()}`);
     if (!response.ok) {
         throw new Error(`Error: status ${response.status}`);

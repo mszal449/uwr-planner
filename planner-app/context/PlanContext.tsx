@@ -10,6 +10,7 @@ interface PlanContextType {
 
 const emptyPlan: PlanI = {
   _id: '',
+  user: '',
   name: 'New Plan',
   degree: 'bachelor',
   semesters: [],

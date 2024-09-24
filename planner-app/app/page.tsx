@@ -1,13 +1,11 @@
 'use client'
-import { getPlanById, getPlans } from "@/services";
+import { getPlans } from "@/services";
 import { PlanI } from "@/types";
 import Data from "@/types/data";
 import { useState, useEffect } from "react";
-import { SemesterPlanner, CourseBrowser, Summary, Navbar } from "@/components";
 import { useSession} from 'next-auth/react'
 import {useRouter} from 'next/navigation'
 import { addPlan } from "@/services";
-import { AddPlanProps } from "@/types/props";
 
 export default function Home() {
   const [plans, setPlans] = useState<Data<PlanI> | null>(null);
@@ -22,6 +20,10 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!session) {
+      return;
+    }
+
     const getdata = async () => {
       const data = await getPlans({ user: session?.user.id });
       setPlans(data);
@@ -50,8 +52,6 @@ export default function Home() {
     };
     
     const plan = await addPlan(newPlan);
-    console.log(plan);
-    console.log(`http://localhost:3000${plan._id}`);
     router.push(`/${plan._id}`);
   }
   

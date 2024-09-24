@@ -6,6 +6,8 @@ import CourseCard from './CourseBrowser/CourseCard';
 const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , deleteCourse, selectedCourseId} : SemesterPlannerProps) => {
   const [ects, setEcts] = React.useState([0, 0, 0, 0, 0, 0, 0])
   useEffect(() => {
+    if (!plan?.semesters) return
+
     let ects = [0, 0, 0, 0, 0, 0, 0]
     plan?.semesters.forEach((semester, index) => {
       semester.forEach(course => {
@@ -21,7 +23,7 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
 
   return (
     <div className={`${styles} flex justify-between gap-2 overflow-x-scroll no-scrollbar`}>
-      {plan && plan.semesters.map((semester, index) => (
+      {plan && plan.semesters && plan.semesters.map((semester, index) => (
         <div key={index} className='bg-[#282828] rounded-md w-full p-2 min-w-[180px] overflow-scroll no-scrollbar' onClick={() => onSelectSemester(index)}>
           <div className='pb-3'>
             <div className='text-3xl font-light truncate'>

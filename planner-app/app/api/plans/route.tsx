@@ -5,7 +5,8 @@ import { getReq, postReq } from "../../../utils/requests";
 
 // Get plans
 export async function GET(req: NextRequest) {
-  return getReq(req, Plan, ['name', 'degree'])
+  // return getReq(req, Plan, ['name', 'degree', 'user'])
+  return getReq(req, Plan, ['name', 'degree', 'user'])
 }
 
 // Create a new plan

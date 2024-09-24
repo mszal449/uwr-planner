@@ -43,7 +43,9 @@ const Summary = ( { styles }: SummaryProps ) => {
       let OWI = false
       let economical = false
       let tags = {...defaultTags}
-  
+      
+      if(!plan.semesters) return;
+      
       plan.semesters.forEach(semester => {
         semester.forEach((course: CourseI) => {
           totalEctsAcc += course.ects;

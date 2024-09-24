@@ -1,6 +1,5 @@
 import { DataI, PlanI } from '@/types'
 import { getAll, addRecord, getById, getWithFilters, updateRecord} from '../utils/servicesUtils';
-import { AddPlanProps } from '@/types/props';
 
 
 const urlString = "plans"

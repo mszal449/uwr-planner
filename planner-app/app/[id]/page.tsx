@@ -2,18 +2,22 @@
 import { SemesterPlanner, CourseBrowser, Summary } from "@/components";
 import { getPlanById } from "@/services";
 import { updatePlan } from "@/services/planService";
-import { CourseI, PlanI } from "@/types";
+import { CourseI } from "@/types";
 import { useEffect, useState } from "react";
 import { Navbar } from "@/components";
 import { usePlanContext } from "../../context/PlanContext";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 export default function PlanView({params}: {params: {id: string}}) {
   const { plan, setPlan } = usePlanContext();
+  const { data: session } = useSession();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
+  const router = useRouter();
 
   function addSelectedCourse(semId: number) {
-    if (plan && selectedCourse) {
+    if (plan && plan.semesters && selectedCourse) {
         const updatedSemesters = plan.semesters.map((semester, index) => {
             semester = semester.filter(c => c._id !== selectedCourse._id)
             if (index === semId) {
@@ -31,7 +35,7 @@ export default function PlanView({params}: {params: {id: string}}) {
 }
 
   function deleteCourse(courseId: string, semId: number) {
-    if (plan) {
+    if (plan && plan.semesters) {
       const updatedSemesters = plan.semesters.map((semester, index) => {
         if (index === semId) {
           return semester.filter(c => c._id !== courseId);
@@ -44,20 +48,24 @@ export default function PlanView({params}: {params: {id: string}}) {
   }
 
   function savePlan() {
-    if (plan) {
+    if (plan && plan._id) {
       updatePlan(plan._id, plan)
     }
   }
   
   useEffect(() => {
     const getdata = async () => {
-      if (params.id) {
+      if (params.id && session) {
         const data = await getPlanById(params.id);
+        if (data?.user != session.user.id) {
+          console.log("User not authorized to view this plan");
+          router.push('/');
+        } 
         setPlan(data);
       }
     };
     getdata();
-  }, [params.id]);
+  }, [params.id, session]);
   
   return (
     <div className="flex flex-col h-screen "> 
