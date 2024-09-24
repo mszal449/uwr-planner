@@ -1,11 +1,10 @@
 import { Plan } from "@/models/";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { getReq, postReq } from "../../../utils/requests";
 
 // Get plans
 export async function GET(req: NextRequest) {
-  // return getReq(req, Plan, ['name', 'degree', 'user'])
   return getReq(req, Plan, ['name', 'degree', 'user'])
 }
 

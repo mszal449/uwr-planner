@@ -59,13 +59,13 @@ export default function Home() {
     <div className="min-h-screen flex flex-col justify-start items-center pt-[10%] gap-3">
       <div className="text-2xl">Choose plan</div>
       {plans?.result.map((plan) => (
-        <a href={`/${plan._id}`} className="bg-gray-800 rounded-md p-2" key={plan._id}>
+        <a href={`/${plan._id}`} className="bg-[#282828] rounded-md p-2 hover:bg-[#414141] transition ease-in duration-150" key={plan._id}>
             {plan.name} - {plan.degree}
         </a>
       ))}
       <div className="flex">
         <input
-          className="text-black outline-none border-none rounded-tl-md rounded-bl-md"
+          className="text-white bg-[#282828] putline border-none rounded-tl-md rounded-bl-md p-2"
           type="text"
           value={newPlanName}
           onChange={handleNewPlanNameChange}

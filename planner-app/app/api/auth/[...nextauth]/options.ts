@@ -31,7 +31,6 @@ export const options = {
             return session;
         }
     }
-      
 }
 
 export default NextAuth(options)
