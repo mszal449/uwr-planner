@@ -48,7 +48,7 @@ const CourseCard = React.memo((
                 );
               })
             )}
-            {!tags && <div className="vi">Brak tagów</div>}
+            {!tags && <div className="text-[#8b8b8b]">Brak tagów</div>}
           </div>
           <div className="flex flex-wrap gap-1">
             {effects && effects.length > 0 && (
@@ -65,7 +65,7 @@ const CourseCard = React.memo((
                 );
               })
             )}
-            {!effects && <div className="vi">Brak efektów</div>}
+            {!effects && <div className="text-[#8b8b8b]">Brak efektów</div>}
           </div>
         </div>
       </CardContent>

@@ -44,7 +44,7 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "Inżynieria oprogramowania (L)": { shortName: "IL", backgroundColor: "#FFD1C1" },
     "Rachunek prawdopodobieństwa (I)": { shortName: "RI", backgroundColor: "#C1FFDD" },
     "Społeczno-ekonomiczne aspekty informatyki (I)": { shortName: "SE", backgroundColor: "#FFC1E1" },
-    "SK (Sieci komputerowe)": { shortName: "SK", backgroundColor: "#F3C1FF" },
+    "Sieci komputerowe": { shortName: "SK", backgroundColor: "#F3C1FF" },
     "Praca zespołowa": { shortName: "PZ", backgroundColor: "#F3C1FF" },
     "default": { shortName: "N/A", backgroundColor: "#C1FFF3" },
   };
@@ -54,7 +54,7 @@ export const educationEffects: { [key: string]: { shortName: string, backgroundC
     "JP (języki programowania i logika)": { shortName: "JP", backgroundColor: "#C1FFD5" },
     "PD (przetwarzanie danych)": { shortName: "PD", backgroundColor: "#E1FFC1" },
     "DS (Data Science)": { shortName: "DS", backgroundColor: "#FFC1E1" },
-    "Pz (Praca zespołowa)": { shortName: "PZ", backgroundColor: "#FFDBC1" },
+    "PZ (Praca zespołowa)": { shortName: "PZ", backgroundColor: "#FFDBC1" },
     "BD (Bazy danych)": { shortName: "BD", backgroundColor: "#FFC1E1" },
     "E (Ekonomia)": { shortName: "E", backgroundColor: "#C1F3FF" },
     "IO (Inżynieria oprogramowania)": { shortName: "IO", backgroundColor: "#C1C4FF" },
