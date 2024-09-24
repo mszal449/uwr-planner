@@ -4,13 +4,13 @@ import "./globals.css";
 import { AuthProvider } from "@/components";
 import { PlanProvider } from "../context/PlanContext";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "UWR Planner",
   description: "Planer zajęć dla studentów Uniwersytetu Wrocławskiego",
 };
+
 
 export default function RootLayout({
   children,
