@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 import connectDB from "@/lib/connectDB";
 import { NextRequest, NextResponse } from "next/server";
 
+
+export function isAdmin(id: any) {
+  return process.env.ADMINS?.split(' ').includes(id)
+}
+
 // Get records
 export async function getReq(
   req: NextRequest, model: mongoose.Model<any>, 

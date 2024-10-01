@@ -1,7 +1,12 @@
-import {Course} from '@/models';
-import { NextRequest } from "next/server"
-import { getId } from "../../../../utils/requests";
+import { NextRequest, NextResponse } from "next/server"
+import { getToken } from 'next-auth/jwt';
+import { getCourseById } from '@/services';
 
 export async function GET(req: NextRequest, {params}: {params: {id: string}}) {
-  return getId(req, {params}, Course)
+  const token = await getToken({req, secret: process.env.JWT_SECRET})
+  if (!token) {
+    return NextResponse.json({error: "Unauthorized"}, {status: 401})
+  }
+  const course = await getCourseById(params.id)
+  return NextResponse.json(course)
 }

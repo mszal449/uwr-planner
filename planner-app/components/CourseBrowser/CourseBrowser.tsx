@@ -4,7 +4,6 @@ import { CourseBrowserProps } from '@/types'
 import { CourseCard } from '@/components'
 import { CourseI } from '@/types'
 import { ScrollArea, Scrollbar} from '@radix-ui/react-scroll-area'
-import { getAllCourses, getCourses } from '@/services'
 import Data from '@/types/data'
  
 
@@ -22,8 +21,12 @@ const CourseBrowser = ({styles, onSelectCourse, selectedCourseId}: CourseBrowser
 
   useEffect(() => {
     const getdata = async () => {
-      const data = await getAllCourses()
-      setCourses(data)
+      const data = await fetch('/api/courses')
+      const result = await data.json()
+      if(result?.status !== 'success') {
+        return
+      }
+      setCourses(result)
     }
     getdata()
   }, []);

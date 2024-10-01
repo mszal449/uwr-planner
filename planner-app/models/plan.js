@@ -8,5 +8,5 @@ const PlanSchema = new mongoose.Schema({
     semesters: {type: [[CourseSchema]], default: [[], [], [], [], [], [], []]},
   });
 
-export default mongoose.models.Plan || mongoose.model("Plan", PlanSchema);
+export default mongoose.models?.Plan || mongoose.model("Plan", PlanSchema);
 export {PlanSchema}

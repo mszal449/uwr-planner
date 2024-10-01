@@ -1,7 +1,5 @@
 'use client'
 import { SemesterPlanner, CourseBrowser, Summary } from "@/components";
-import { getPlanById } from "@/services";
-import { updatePlan } from "@/services/planService";
 import { CourseI } from "@/types";
 import { useEffect, useState } from "react";
 import { Navbar } from "@/components";
@@ -52,20 +50,29 @@ export default function PlanView({params}: {params: {id: string}}) {
     }
   }
 
-  function savePlan() {
+  async function savePlan() {
     if (plan && plan._id) {
-      updatePlan(plan._id, plan)
+      const response = await fetch(`/api/plans/${plan._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(plan),
+      });
     }
   }
   
   useEffect(() => {
     const getdata = async () => {
       if (params.id && session) {
-        const data = await getPlanById(params.id);
-        if (data?.user != session.user.id) {
-          router.push('/');
+        const response = await fetch(`/api/plans/${params.id}`);
+        const data = await response.json();
+        if(!response.ok) {
+          return
+        }
+
+        if (data.user == session.user.id) {
+          setPlan(data);
         } 
-        setPlan(data);
+        else router.push('/');
       }
     };
     getdata();

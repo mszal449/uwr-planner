@@ -1,21 +1,37 @@
-import { DataI, CourseI } from '@/types'
-import { getAll, addRecord, getById, getWithFilters} from '../utils/servicesUtils';
+import connectDB from '@/lib/connectDB';
+import { Course } from '@/models';
 
-
-const urlString = "courses"
-
-export async function getAllCourses(): Promise<DataI<CourseI>> {
-    return getAll(urlString)
+export async function getAllCourses() {
+    try {
+        await connectDB();
+        const data = await Course.find();
+        const maxLength = data.length;
+        const result = data.slice();
+        return {status: 'success',result, maxLength}
+    } catch (error) {
+        let message;
+        if (error instanceof Error) {
+            message = error.message;
+            return {status: 'error', message, result: [], maxLength: 0}
+        }
+    return {status: 'error', message: 'An unknown error occured', result: [], maxLength: 0}
+    }
 }
-  
-export async function getCourses(filters: Record<string, any>): Promise<DataI<CourseI>> {
-    return getWithFilters(urlString, filters)
-}
 
-export async function getCourseById(id: string): Promise<CourseI | null> {
-    return getById(urlString, id) 
-}
-
-export async function addCourse(Course: CourseI): Promise<CourseI> {
-    return addRecord(urlString, Course)
+export async function getCourseById(id: string) {
+    try {
+        await connectDB();
+        const data = await Course.findById(id);
+        if(!data) {
+            return {status: 'error', message: "Course not found"}
+        }
+        return {status: 'success',data}
+    } catch (error) {
+        let message;
+        if (error instanceof Error) {
+            message = error.message;
+            return {status: 'error', message, result: [], maxLength: 0}
+        }
+        return {status: 'error', message: 'An unknown error occured'}
+    }
 }
