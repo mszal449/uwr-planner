@@ -33,7 +33,8 @@ export interface SummaryProps {
 
 export interface NavbarProps {
     planName?: string
-    savePlan: ()=> void;
+    degree?: string
+    savePlan: ()=> void
 }
 
 export interface AddPlanProps {

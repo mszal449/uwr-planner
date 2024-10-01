@@ -80,7 +80,7 @@ export default function PlanView({params}: {params: {id: string}}) {
   
   return (
     <div className="flex flex-col h-screen "> 
-      <Navbar planName={plan?.name} savePlan={savePlan}/>
+      <Navbar planName={plan?.name} degree={plan?.degree} savePlan={savePlan}/>
       <div className="flex-grow grid grid-cols-12 gap-4 px-5 min-h-0">
         <CourseBrowser 
           styles="col-start-1 col-end-3 overflow-auto" 
