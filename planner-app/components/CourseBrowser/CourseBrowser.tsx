@@ -42,7 +42,7 @@ const CourseBrowser = ({styles, onSelectCourse, selectedCourseId}: CourseBrowser
           onChange={handleSearchChange}/>
       </div>
 
-      <ScrollArea className='flex flex-col gap-2 h-full overflow-auto pr-1'>
+      <ScrollArea className='flex flex-col gap-2 h-full overflow-y-auto pr-1'>
         {filteredCourses?.map((course: CourseI) => (
           <CourseCard
             key={course._id}
