@@ -96,7 +96,7 @@ export default function PlanView({params}: {params: {id: string}}) {
           selectedCourseId={selectedCourse?._id || null}
         />
       </div>
-      <Summary styles="mt-3 h-10"/>
+      <Summary styles="mt-3 h-20"/>
     </div>
   );
 }
