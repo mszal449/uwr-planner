@@ -116,7 +116,7 @@ const Summary = ( { styles }: SummaryProps ) => {
 
   return (
     <div className={`${styles} text-sm bg-[#282828] flex flex-col md:flex-row justify-center items-center px-5 gap-2`}>
-      <div className={`${ totalEcts < 210 ? "text-red-500" : "text-green-500"}`}>{totalEcts}/{200} ECTS</div>
+      <div className={`${ totalEcts < 200 ? "text-red-500" : "text-green-500"}`}>{totalEcts}/{200} ECTS</div>
       <div className={`rounded-md p-1 ${ OIKPECTS < OIKP.engineer.ects ? "text-red-500" : "text-green-500"}`}>O+I+K+P: {OIKPECTS}/{OIKP.engineer.ects} ECTS</div>
       <div className={`rounded-md p-1 ${ itEcts < 66 ? "text-red-500" : "text-green-500"}`}>Inf: {itEcts}/66 ECTS</div>
       <div className={`rounded-md p-1 ${ engineerEcts < 12 ? "text-red-500" : "text-green-500"}`}>I.inż: {engineerEcts}/12 ECTS</div>
