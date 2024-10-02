@@ -63,6 +63,20 @@ export async function updatePlan(id: string, updatedPlan: PlanI) {
   }
 }
 
+// Delete a plan by ID
+export async function deletePlan(id: string) {
+  try {
+    await connectDB();
+    const plan = await Plan.findByIdAndDelete(id);
+    if (!plan) {
+      return { status: 'error', message: 'Plan not found' };
+    }
+    return { status: 'success', result: plan };
+  } catch (error) {
+    return handleError(error);
+  }
+}
+
 // Helper function for error handling
 function handleError(error: unknown) {
   if (error instanceof Error) {

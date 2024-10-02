@@ -1,6 +1,6 @@
 // Declare types here
 import {UserI, PlanI, CourseI} from './models'
-import {CourseBrowserProps, CourseCardProps, SemesterPlannerProps, SummaryProps} from './props'
+import {CourseBrowserProps, CourseCardProps, CourseBadgeProps, SemesterPlannerProps, SummaryProps} from './props'
 import DataI from './data'
 
 
@@ -10,5 +10,6 @@ export type {
     CourseBrowserProps,
     SummaryProps,
     CourseCardProps,
+    CourseBadgeProps,
     UserI, CourseI, PlanI, DataI
 }

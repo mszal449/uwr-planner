@@ -15,12 +15,11 @@ const Navbar = ({ planName, degree, savePlan }: NavbarProps) => {
         <button
           className="text-white font-light py-2 px-4 rounded-lg bg-green-500 hover:bg-green-600 transition ease-in duration-150"
           onClick={savePlan}>
-          Save
+          Zapisz
         </button>
 
         {/* Plan Name and Degree */}
-        <div className="ml-3 text-2xl">{planName} - {degree}</div>
-        <div className="flex flex-col gap-0"></div>
+        <div className="ml-3 text-xl">{planName} - {degree === 'engineer' ? 'Inżynier' : 'Licencjat'}</div>
       </div>
 
       {/* HoverCard and Links */}
@@ -28,15 +27,15 @@ const Navbar = ({ planName, degree, savePlan }: NavbarProps) => {
         <HoverCard openDelay={150} closeDelay={150}>
           <HoverCardTrigger className="text-red-500 text-3xl cursor-pointer px-3">?</HoverCardTrigger>
           <HoverCardContent>
-            <div className="p-2 bg-[#333333] text-xl rounded-md outline-none border-purple-400 border-2">
-              <div className="text-red-500">Plan won't be saved unless you click the save button.</div>
-              <div className="text-white">Click course, then select semester to assign course to semester.</div>
-              <div className="text-white">Double click course in semester column to delete it.</div>
-            </div>
+          <div className="p-2 bg-[#333333] text-xl rounded-md outline-none border-red-500 border-2">
+            <div className="text-red-500">Plan nie zostanie zapisany, dopóki nie klikniesz przycisku zapisz.</div>
+            <div className="text-white">Kliknij kurs, a następnie wybierz semestr, aby przypisać kurs do semestru.</div>
+            <div className="text-white">Kliknij dwukrotnie kurs w kolumnie semestru, aby go usunąć.</div>
+          </div>
           </HoverCardContent>
         </HoverCard>
-        <Link className="navbarElement" href="/">Choose plan</Link>
-        <Link className="navbarElement" href="/api/auth/signout?callbackUrl=/">Logout</Link>
+        <Link className="navbarElement" href="/">Wybierz Plan</Link>
+        <Link className="navbarElement" href="/api/auth/signout?callbackUrl=/">Wyloguj</Link>
       </div>
     </main>
   );

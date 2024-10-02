@@ -35,7 +35,7 @@ const CourseBrowser = ({styles, onSelectCourse, selectedCourseId}: CourseBrowser
     <div className={`${styles} flex flex-col gap-2`}>
       <div className='flex'>
         <input 
-          type="text" placeholder='search' 
+          type="text" placeholder='Wyszukaj kurs' 
           className='font-light p-2 rounded-md outline-none w-full bg-[#282828] focus:bg-[#363636] transition ease-in'
           value={search}
           onChange={handleSearchChange}/>

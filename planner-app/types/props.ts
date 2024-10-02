@@ -42,3 +42,10 @@ export interface AddPlanProps {
     user: string,
     degree: "engineer" | "bachelor",
 }
+
+export interface CourseBadgeProps {
+    text: string,
+    shortText: string,
+    textColor: string,
+    borderColor: string,
+  }

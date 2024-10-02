@@ -1,12 +1,7 @@
 import React from 'react'
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '../ui/hover-card'
+import { CourseBadgeProps } from '@/types'
 
-interface CourseBadgeProps {
-  text: string,
-  shortText: string,
-  textColor: string,
-  borderColor: string,
-}
 
 const CourseBadge = ( {text, shortText, textColor, borderColor}: CourseBadgeProps) => {
 
