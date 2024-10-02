@@ -32,40 +32,40 @@ const CourseCard = React.memo((
         </CardDescription>
       </CardHeader>
       <CardContent className='px-4 pt-0 pb-2'>
-        <div className='flex justify-between w-full'>
-          <div className="flex flex-wrap gap-1">
+        <div className='flex justify-between items-center w-full gap-1 overflow-hidden overflow-x-scroll no-scrollbar'>
+          <div className="flex gap-[1px] ">
             {tags && tags.length > 0 && (
               tags.map((tag: string, index: number) => {
                 const courseTag = CourseTags[tag] || CourseTags["default"];
                 return (
                   <CourseBadge
                     key={index}
-                    text={tag}
+                    text={`Tag: ${tag}`}
                     shortText={courseTag.shortName}
-                    textColor={"#c8c8c8"}
-                    bgColor={courseTag.backgroundColor}
+                    textColor={"text-green-400"}
+                    borderColor={"border-green-400"}
                   />
                 );
               })
             )}
-            {!tags && <div className="text-[#8b8b8b]">Brak tagów</div>}
+            {!tags && <s className="text-[#8b8b8b] text-sm text-">Tagi</s>}
           </div>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex gap-[1px]">
             {effects && effects.length > 0 && (
               effects.map((effect, index) => {
                 const educationEffect = educationEffects[effect] || educationEffects["default"];
                 return (
                   <CourseBadge
                     key={index}
-                    text={effect}
+                    text={`Efekt: ${effect}`}
                     shortText={educationEffect.shortName}
-                    textColor={"#ffffff"}
-                    bgColor={educationEffect.backgroundColor}
+                    textColor={"text-[#ff9b9b]"}
+                    borderColor={"border-[#ff9b9b]"}
                   />
                 );
               })
             )}
-            {!effects && <div className="text-[#8b8b8b]">Brak efektów</div>}
+            {!effects && <s className="text-[#8b8b8b] text-sm">Efekty</s>}
           </div>
         </div>
       </CardContent>

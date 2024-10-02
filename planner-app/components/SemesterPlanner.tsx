@@ -20,6 +20,16 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
     setEcts(ects)
   }, [plan])
 
+  const ectsColor = (ects: number, threshold: number) => {
+    if (ects >= threshold) {
+      return 'text-green-500'
+    } else if (ects >= threshold - 10) {
+      return 'text-orange-500'
+    }
+    else {
+      return 'text-red-500'
+    }
+  } 
 
   return (
     <div className={`${styles} flex justify-between gap-2 overflow-x-scroll no-scrollbar`}>
@@ -29,7 +39,7 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
             <div className='text-3xl font-light truncate'>
               {index + 1} Semestr 
             </div>
-            <div className={`text-gray-400 truncate ${(ects[index] >= 30 * (index + 1)) ? "text-green-500" : 'text-red-500'}`}>{ects[index]}/{30 * (index + 1)} ECTS</div>
+            <div className={`text-gray-400 truncate ${ectsColor(ects[index], 30 * (index + 1) )}`}>{ects[index]}/{30 * (index + 1)} ECTS</div>
           </div>
           <div className='flex flex-col gap-1'>
             {semester.map((course) => (

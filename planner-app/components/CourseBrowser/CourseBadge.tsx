@@ -5,14 +5,14 @@ interface CourseBadgeProps {
   text: string,
   shortText: string,
   textColor: string,
-  bgColor: string
+  borderColor: string,
 }
 
-const CourseBadge = ( {text, shortText, textColor, bgColor}: CourseBadgeProps) => {
+const CourseBadge = ( {text, shortText, textColor, borderColor}: CourseBadgeProps) => {
 
   return (
     <HoverCard openDelay={150} closeDelay={150}>
-      <HoverCardTrigger className={`bg-[${bgColor}] text-[${textColor}] rounded-md px-2 py-1 text-sm border border-white`}>
+      <HoverCardTrigger className={`${textColor} ${borderColor} rounded-md px-2 py-1 text-sm border`}>
       {shortText}
       </HoverCardTrigger>
       <HoverCardContent>
