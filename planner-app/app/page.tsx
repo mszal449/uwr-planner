@@ -150,10 +150,10 @@ export default function Home() {
           className="p-3 bg-green-500 hover:bg-green-600 rounded-tr-md rounded-br-md transition duration-150 cursor-pointer"
           onClick={handleNewPlanCreation}
         >
-          New Plan
+          Nowy Plan
         </div>
       </div>
-      {planExists && <div className="text-red-500">Plan with this name already exists</div>}
+      {planExists && <div className="text-red-500">Plan o takiej nazwie już istnieje.</div>}
     </div>
   );
 }
