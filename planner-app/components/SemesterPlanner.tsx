@@ -39,7 +39,7 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
   }
 
   return (
-    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll no-scrollbar`}>
+    <div className={`${styles} flex justify-between gap-2 overflow-x-scroll`}>
       {plan && plan.semesters && plan.semesters.map((semester, index) => (
         <div key={index} className='bg-[#282828] rounded-md w-full p-2 min-w-[180px] overflow-scroll no-scrollbar' onClick={() => onSelectSemester(index)}>
           <div className='pb-3'>

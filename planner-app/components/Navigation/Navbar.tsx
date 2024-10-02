@@ -3,8 +3,6 @@ import React from 'react';
 import { NavbarProps } from '@/types/props';
 import { HoverCard } from '@radix-ui/react-hover-card';
 import { HoverCardContent, HoverCardTrigger } from '../ui/hover-card';
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger, DialogClose, DialogOverlay } from '@radix-ui/react-dialog';
-import { DialogFooter, DialogHeader } from '../ui/dialog';
 
 const Navbar = ({ planName, degree, savePlan }: NavbarProps) => {
 
@@ -25,7 +23,7 @@ const Navbar = ({ planName, degree, savePlan }: NavbarProps) => {
       {/* HoverCard and Links */}
       <div className="flex gap-4 items-center">
         <HoverCard openDelay={150} closeDelay={150}>
-          <HoverCardTrigger className="text-red-500 text-3xl cursor-pointer px-3">?</HoverCardTrigger>
+          <HoverCardTrigger className="navbarElement cursor-pointer">Instrukcja</HoverCardTrigger>
           <HoverCardContent>
           <div className="p-2 bg-[#333333] text-xl rounded-md outline-none border-red-500 border-2">
             <div className="text-red-500">Plan nie zostanie zapisany, dopóki nie klikniesz przycisku zapisz.</div>
