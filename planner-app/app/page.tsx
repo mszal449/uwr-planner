@@ -141,6 +141,7 @@ export default function Home() {
       )}
       <div className="flex">
         <input
+          spellCheck="false"
           className="text-white bg-[#282828] border-none rounded-tl-md rounded-bl-md p-2"
           type="text"
           value={newPlanName}
