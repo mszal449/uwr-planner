@@ -22,15 +22,15 @@ export default function PlanView({params}: {params: {id: string}}) {
   function addSelectedCourse(semId: number) {
     if (plan && plan.semesters && selectedCourse) {
         const updatedSemesters = plan.semesters.map((semester, index) => {
-            semester = semester.filter(c => c._id !== selectedCourse._id)
-            if (index === semId) {
-                const courseExists = semester.some(c => c._id === selectedCourse._id);
-                if (courseExists) {
-                    return semester
-                }
-                return [...semester, selectedCourse]
+          // semester = semester.filter(c => c._id !== selectedCourse._id)
+          if (index === semId) {
+            const courseExists = semester.some(c => c._id === selectedCourse._id);
+            if (courseExists) {
+                return semester
             }
-            return semester;
+            return [...semester, selectedCourse]
+          }
+          return semester;
         })
         setPlan({ ...plan, semesters: updatedSemesters })
         setSelectedCourse(null);
