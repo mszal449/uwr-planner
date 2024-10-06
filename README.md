@@ -1,6 +1,7 @@
 # UWR Planner
 ## Overview
 This application is a website designed for planning studies for the Engineering's degree in Computer Science at the University of Wrocław. It utilizes publicly available data from the university's website, allowing users to verify if graduation requirements are met. The project uses the Next.js framework, a MongoDB database, and OAuth authentication via GitHub.
+![{EA6B53CE-8087-4F67-879A-E3858D440F3E}](https://github.com/user-attachments/assets/a077c595-b94d-44d5-8bdb-1cd42caa784b)
 
 ## Getting Started
 First clone repository and run: 
@@ -19,12 +20,6 @@ After that run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
