@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function PlanView({params}: {params: {id: string}}) {
   const { plan, setPlan } = usePlanContext();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
-  const [markedCoursesKey, selectMarkedCoursesKey] = useState<"tag" | "effect" | "type" | null>("tag") // tag, effect or type
+  const [markedCoursesKey, selectMarkedCoursesKey] = useState<"tag" | "effect" | "type" | null>(null) // tag, effect or type
   const [markedCoursesValue, selectMarkedCoursesValue] = useState<string | string[] | null>(null) // name, e.g. "Bazy Danych", "Kurs Inżynierski"
 
   const router = useRouter();

@@ -54,6 +54,7 @@ const CourseBrowser = ({styles, onSelectCourse, selectedCourseId}: CourseBrowser
             effects={course.effects}
             onClickAction={() => onSelectCourse(course)}
             selected={selectedCourseId === course._id}
+            marked={false}
         />))}
         <Scrollbar orientation='vertical' />
       </ScrollArea>
