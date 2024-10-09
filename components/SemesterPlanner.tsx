@@ -1,10 +1,12 @@
 'use client'
 import React, { useEffect } from 'react'
-import { SemesterPlannerProps } from '@/types';
+import { CourseI, SemesterPlannerProps } from '@/types';
 import CourseCard from './CourseBrowser/CourseCard';
+import { CourseTags } from '@/const';
 
-const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , deleteCourse, selectedCourseId} : SemesterPlannerProps) => {
-  const [ects, setEcts] = React.useState([0, 0, 0, 0, 0, 0, 0])
+const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , deleteCourse, selectedCourseId, markedCoursesKey, markedCoursesValue} : SemesterPlannerProps) => {
+   const [ects, setEcts] = React.useState([0, 0, 0, 0, 0, 0, 0])
+
   useEffect(() => {
     if (!plan?.semesters) return
 
@@ -38,6 +40,17 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
     return 30 * (semester + 1)
   }
 
+  function isMarked(course: CourseI): boolean { 
+    if (markedCoursesKey && markedCoursesValue) {
+      if (markedCoursesKey === "tag" && course.tags) {
+        return course.tags.some(tag => CourseTags[tag]?.shortName === markedCoursesValue);
+      } else if (markedCoursesKey === "type") {
+        return  markedCoursesValue.includes(course.type)
+      }
+    }
+    return false
+  }
+
   return (
     <div className={`${styles} flex justify-between gap-2 overflow-x-scroll`}>
       {plan && plan.semesters && plan.semesters.map((semester, index) => (
@@ -61,6 +74,7 @@ const SemesterPlanner = ( { styles, plan, onSelectSemester, onSelectCourse , del
                 onClickAction={() => onSelectCourse(course)}
                 doubleClickAction={() => deleteCourse(course._id, index)}
                 selected={selectedCourseId === course._id}
+                marked={isMarked(course)}
               />
             ))}
           </div>

@@ -15,7 +15,7 @@ const defaultTags = {
   "BD": false,
 }
 
-const Summary = ( { styles }: SummaryProps ) => {
+const Summary = ( { styles, onClickMark}: SummaryProps ) => {
   const { plan } = usePlanContext();
   const [totalEcts, setTotalEcts] = React.useState(0);        // 170
   const [itEcts, setItEcts] = React.useState(0);              // 66
@@ -27,6 +27,14 @@ const Summary = ( { styles }: SummaryProps ) => {
   const [OWI, setOWI] = React.useState(false);
   const [economical, setEconomical] = React.useState(false);
   const [tags, setTags] = React.useState<{ [key: string]: boolean }>(defaultTags);
+
+  const infCourses = ["Informatyczny", 
+    "Informatyczny 1", 
+    "Informatyczny 2", 
+    "Informatyczny 3", 
+    "Informatyczny inż.",
+    "I2.T - teoria inf.",
+    "I2.Z - zastosowania inf."]
   
 
 
@@ -49,14 +57,7 @@ const Summary = ( { styles }: SummaryProps ) => {
         semester.forEach((course: CourseI) => {
           totalEctsAcc += course.ects;
           
-          if (["Informatyczny", 
-            "Informatyczny 1", 
-            "Informatyczny 2", 
-            "Informatyczny 3", 
-            "Informatyczny inż.",
-            "I2.T - teoria inf.",
-            "I2.Z - zastosowania inf."]
-            .includes(course.type)) {
+          if (infCourses.includes(course.type)) {
             itEcts += course.ects;
           }
 
@@ -117,19 +118,57 @@ const Summary = ( { styles }: SummaryProps ) => {
   return (
     <div className={`${styles} text-sm bg-[#282828] flex flex-col md:flex-row justify-center items-center px-5 gap-2`}>
       <div className={`${ totalEcts < 200 ? "text-red-500" : "text-green-500"}`}>{totalEcts}/{200} ECTS</div>
-      <div className={`rounded-md p-1 ${ OIKPECTS < OIKP.engineer.ects ? "text-red-500" : "text-green-500"}`}>O+I+K+P: {OIKPECTS}/{OIKP.engineer.ects} ECTS</div>
-      <div className={`rounded-md p-1 ${ itEcts < 66 ? "text-red-500" : "text-green-500"}`}>Inf: {itEcts}/66 ECTS</div>
-      <div className={`rounded-md p-1 ${ engineerEcts < 12 ? "text-red-500" : "text-green-500"}`}>I.inż: {engineerEcts}/12 ECTS</div>
-      <div className={`rounded-md p-1 ${ engineerCourseEcts < 10 ? "text-red-500" : "text-green-500"}`}>K.inż: {engineerCourseEcts}/10 ECTS</div>
-      <div className={`rounded-md p-1 ${ proseminar ? "text-green-500" : "text-red-500"}`}>Proseminarium</div>
-      <div className={`rounded-md p-1 ${ humanisticEcts < 5 ? "text-red-500" : "text-green-500"}`}>Humianistyczno-społeczny: {humanisticEcts}/5 ECTS</div>
-      <div className={`${OWI ? "text-green-500" : "text-red-500"}`}>OWI</div>
-      <div className={`${economical ? "text-green-500" : "text-red-500"}`}>E</div>
+      <div className={`rounded-md p-1 ${ OIKPECTS < OIKP.engineer.ects ? "text-red-500" : "text-green-500"}`}>
+        <button onClick={() => onClickMark("type", OIKP.type)}>
+          O+I+K+P: {OIKPECTS}/{OIKP.engineer.ects} ECTS
+        </button>
+        </div>
+
+      <div className={`rounded-md p-1 ${ itEcts < 66 ? "text-red-500" : "text-green-500"}`}>
+        <button onClick={() => onClickMark("type", infCourses)}>
+          Inf: {itEcts}/66 ECTS
+        </button>
+      </div>
+
+      <div className={`rounded-md p-1 ${ engineerEcts < 12 ? "text-red-500" : "text-green-500"}`}>
+        <button onClick={() => onClickMark("type", ["Informatyczny inż."])}>
+          I.inż: {engineerEcts}/12 ECTS
+        </button>
+      </div>
+
+      <div className={`rounded-md p-1 ${ engineerCourseEcts < 10 ? "text-red-500" : "text-green-500"}`}>
+        <button onClick={() => onClickMark("type", ["Kurs inżynierski"])}>
+          K.inż: {engineerCourseEcts}/10 ECTS
+        </button>
+      </div>
+
+      <div className={`rounded-md p-1 ${ proseminar ? "text-green-500" : "text-red-500"}`}>
+        <button onClick={() => onClickMark("type", ["Proseminarium"])}>
+          Proseminarium
+        </button>
+      </div>
+
+      <div className={`rounded-md p-1 ${ humanisticEcts < 5 ? "text-red-500" : "text-green-500"}`}>
+        <button onClick={() => onClickMark("type", ["Humanistyczno-społeczny"])}>
+          Humanistyczno-społeczny: {humanisticEcts}/5 ECTS
+        </button>
+      </div>
+
+      <div className={`${OWI ? "text-green-500" : "text-red-500"}`}>
+            OWI
+      </div>
+
+      <div className={`${economical ? "text-green-500" : "text-red-500"}`}>
+        <button onClick={() => onClickMark("tag", "E")}>
+          E
+        </button>
+      </div>
+
       <h3>Tagi:</h3>
       <div className='flex gap-1'>
         {Object.entries(tags).map(([tag]) => (
           <div key={tag} className={tags[tag] ? "text-green-500" : "text-red-500"}>
-            {tag}
+            <button onClick={() => onClickMark("tag", tag)}>{tag}</button>
           </div>
         ))}      
       </div>

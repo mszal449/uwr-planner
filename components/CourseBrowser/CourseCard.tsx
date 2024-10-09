@@ -12,13 +12,15 @@ import { CourseBadge } from '..';
 
 const CourseCard = React.memo((
   {name, semester, type, ects, tags = [], effects = [], 
-    onClickAction = () => {}, doubleClickAction = () => {}, selected}: CourseCardProps) => {
+    onClickAction = () => {}, doubleClickAction = () => {}, selected, marked}: CourseCardProps) => {
 
   return (
     <Card 
-      className={`bg-[#282828] border-2 transition ease-in text-white cursor-pointer
-         ${selected ? 
-        "border-purple-400 hover:border-purple-500 bg-[#3b3b3b]"  : 
+    className={`border-2 transition ease-in text-white cursor-pointer
+      ${marked ? 
+        "border-yellow-500 bg-[#282828] hover:bg-[#363636]" : 
+        selected ? 
+        "border-purple-400 hover:border-purple-500 bg-[#3b3b3b]" : 
         "border-[#1f1f1f] bg-[#282828] hover:bg-[#363636]"} `}
       onClick={onClickAction}
       onDoubleClick={doubleClickAction}>

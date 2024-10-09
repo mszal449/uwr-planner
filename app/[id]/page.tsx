@@ -11,6 +11,9 @@ import { useRouter } from "next/navigation";
 export default function PlanView({params}: {params: {id: string}}) {
   const { plan, setPlan } = usePlanContext();
   const [selectedCourse, setSelectedCourse] = useState<CourseI | null>(null)
+  const [markedCoursesKey, selectMarkedCoursesKey] = useState<"tag" | "effect" | "type" | null>("tag") // tag, effect or type
+  const [markedCoursesValue, selectMarkedCoursesValue] = useState<string | string[] | null>(null) // name, e.g. "Bazy Danych", "Kurs Inżynierski"
+
   const router = useRouter();
   const { data: session } = useSession({
     required: true,
@@ -18,6 +21,11 @@ export default function PlanView({params}: {params: {id: string}}) {
       router.push('/api/auth/signin?callbackUrl=/');
     },
   });
+
+  function onClickMark(key: string, value: string | string[]) {
+    selectMarkedCoursesKey(key as "tag" | "effect" | "type")
+    selectMarkedCoursesValue(value)
+  }
 
   function addSelectedCourse(semId: number) {
     if (plan && plan.semesters && selectedCourse) {
@@ -94,9 +102,13 @@ export default function PlanView({params}: {params: {id: string}}) {
           onSelectCourse={(c: CourseI) => setSelectedCourse(c)}
           deleteCourse={(courseId: string, semId: number) => deleteCourse(courseId, semId)}
           selectedCourseId={selectedCourse?._id || null}
+          markedCoursesKey={markedCoursesKey}
+          markedCoursesValue={markedCoursesValue}
         />
       </div>
-      <Summary styles="mt-3 h-20"/>
+      <Summary 
+        styles="mt-3 h-20"
+        onClickMark={(key: string, value: string | string[]) => onClickMark(key, value)}/>
     </div>
   );
 }

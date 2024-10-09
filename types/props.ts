@@ -16,6 +16,7 @@ export interface CourseCardProps {
     onClickAction: () => void | null
     doubleClickAction?: () => void | null
     selected: boolean
+    marked: boolean
   }
 
 export interface SemesterPlannerProps {
@@ -24,11 +25,14 @@ export interface SemesterPlannerProps {
     onSelectSemester: (id: number) => void;
     onSelectCourse: (c: CourseI) => void;
     deleteCourse: (courseId: string, semId: number) => void;
-    selectedCourseId: string | null
+    selectedCourseId: string | null;
+    markedCoursesKey: "tag" | "effect" | "type" | null;
+    markedCoursesValue: string | string[] | null;
 }
 
 export interface SummaryProps {
     styles?: string;
+    onClickMark: (key: string, value: string | string[]) => void;
 }
 
 export interface NavbarProps {
